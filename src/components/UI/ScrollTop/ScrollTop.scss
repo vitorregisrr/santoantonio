@@ -1,0 +1,25 @@
+@import 'assets/scss/util/__animations.scss';
+@import 'assets/scss/variables/__all.scss';
+
+.ScrollTop{
+    position: absolute;
+    right: 150px;
+    width: 80px;
+    height: 34px;
+    bottom: 220px;
+    z-index: 6;
+    background: none;
+    border: none;
+    background-image: url('../../../assets/images/ico/scroll-top.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    @include transition();
+
+    @media screen and (max-width: $bp-LG){
+        right: 20px;
+        bottom: 170px;
+        width: 70px;
+    }
+    
+    
+}
