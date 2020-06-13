@@ -6,14 +6,15 @@ import Footer from '../../components/Sections/Footer';
 import ScrollTop from 'components/UI/ScrollTop/ScrollTop';
 
 const Layout = props => {
+    const showTemplate = !['/', '/sitio', '/hipica'].includes(props.location.pathname)
     return (
         <React.Fragment>
-            {props.location.pathname !== '/' && <Navbar/>}
+            {showTemplate && <Navbar/>}
             <main>
                 {props.children}
             </main>
-            {props.location.pathname !== '/' &&  <Footer/>}
-            {props.location.pathname !== '/' &&  <ScrollTop/>}
+            {showTemplate &&  <Footer/>}
+            {showTemplate &&  <ScrollTop/>}
         </React.Fragment>
     )
 

@@ -1,15 +1,10 @@
 import React, {useState, useEffect} from 'react'
-import {NavLink, withRouter} from 'react-router-dom'
+import {NavLink, withRouter, Link} from 'react-router-dom'
 
+import brandImage from '../../../assets/images/brands/capa.svg'
 import './styles.scss';
 
 const Navbar = ({location}) => {
-    const [shouldTransition,
-        setShouldTransition] = useState(false)
-    const [underlineStyling,
-        setUnderlineStyling] = useState({opacity: 0, width: 0, top: 100});
-    const [currIndex,
-        setCurrIndex] = useState(location.pathname.split('/').pop());
     const [isToggled,
         setIsToggled] = useState(false);
     const IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -18,51 +13,49 @@ const Navbar = ({location}) => {
         setIsToggled(!isToggled);
     }
 
-    const menuItems = [
+    const sitioItems = [
         {
-            key: 'historia',
+            key: '/sitio/historia',
             label: 'História'
         }, {
-            key: 'empreendedorismo',
-            label: 'Empreendedorismo'
+            key: '/sitio/quemsomos',
+            label: 'Quem Somos'
         }, {
-            key: 'hipismo',
-            label: 'Hipismo'
+            key: '/sitio/paddock',
+            label: 'Paddock'
         }, {
-            label: 'Coleção de arte',
-            key: 'colecao'
+            label: 'Fauna',
+            key: '/sitio/fauna'
         }, {
-            label: 'Meio Ambiente',
-            key: 'meio-ambiente'
+            label: 'Flora',
+            key: '/sitio/flora'
+        }, {
+            label: 'Tour',
+            key: '/sitio/tour'
         }
     ];
 
-    const moveMenu = (index, toggle) => {
-        const item = document.querySelector(`.Navbar__item[data-key="${index}"]`);
-        setCurrIndex(index);
-
-       if(item){
-        if (!toggle) {
-            toggleMenu();
+    const hipicaItems = [
+        {
+            key: '/sitio/historia',
+            label: 'História'
+        }, {
+            key: '/sitio/quemsomos',
+            label: 'Quem Somos'
+        }, {
+            key: '/sitio/paddock',
+            label: 'Paddock'
+        }, {
+            label: 'Fauna',
+            key: '/sitio/fauna'
+        }, {
+            label: 'Flora',
+            key: '/sitio/flora'
+        }, {
+            label: 'Tour',
+            key: '/sitio/tour'
         }
-
-        setTimeout(() => {
-            // Animações do traço underline: Se for p/ o primeiro, esconder
-            setUnderlineStyling({
-                opacity: 1,
-                left: item.offsetLeft,
-                top: item.offsetTop + 17,
-                width: item.offsetWidth
-            })
-        }, 100)
-       }
-    }
-
-    useEffect(() => {
-        moveMenu(currIndex, true);
-
-        setTimeout(() => setShouldTransition(true), 400)
-    }, []);
+    ];
 
     return (
         <React.Fragment>
@@ -73,7 +66,9 @@ const Navbar = ({location}) => {
                 <button
                     className={`${isToggled
                     ? 'active'
-                    : ''} ${IOS ? 'ios' : ''}`}
+                    : ''} ${IOS
+                        ? 'ios'
+                        : ''}`}
                     onClick={() => toggleMenu()}>
                     <div></div>
                     <div></div>
@@ -81,7 +76,7 @@ const Navbar = ({location}) => {
                 </button>
 
                 <NavLink className="Navbar__toggler-home" to="/">
-                    Chiquinho <span>Brandão</span>
+                    <img src={brandImage} alt="Logomarca Santo Antonio"/>
                 </NavLink>
             </div>
             <nav
@@ -96,25 +91,57 @@ const Navbar = ({location}) => {
                             ? 'ios'
                             : ''}`}>
 
-                        <div className="Navbar__brand">
-                            <NavLink to="/">
-                                Chico Brandão
-                            </NavLink>
+                        <div className="Navbar__left">
+                            <div className="Navbar__brand">
+                                <NavLink to="/">
+                                    <img src={brandImage} alt="Logomarca Santo Antonio"/>
+                                </NavLink>
+                            </div>
+
+                            <div className="Navbar__div"></div>
+
+                            <Link className="Navbar__caption">
+                                Sítio
+                            </Link>
                         </div>
                         <div className="Navbar__links">
-                            <hr
-                                className="Navbar__underline"
-                                style={underlineStyling}
-                                data-shouldTransition={shouldTransition}/> {menuItems.map((i, index) => (
-                                <NavLink
-                                    data-key={i.key}
-                                    className={`Navbar__item`}
-                                    key={i.key}
-                                    to={i.key}
-                                    onClick={(e) => moveMenu(i.key)}>
-                                    {i.label}
-                                </NavLink>
-                            ))}
+                            {/sitio/.test(location.pathname) &&
+                            (<>
+                                {sitioItems.map((i, index) => (
+                                    <NavLink
+                                        data-key={i.key}
+                                        className={`Navbar__item`}
+                                        key={i.key}
+                                        to={i.key}
+                                        onClick={() => setIsToggled(false)}>
+                                        {i.label}
+                                    </NavLink>                                
+                                ))}
+
+                                <Link className={`Navbar__button`}
+                                    to="/hipica">
+                                    Conheça a Equipe Hípica
+                                </Link>'
+                            </>)}
+
+                            {/hipica/.test(location.pathname) &&
+                            (<>
+                                {hipicaItems.map((i, index) => (
+                                    <NavLink
+                                        data-key={i.key}
+                                        className={`Navbar__item`}
+                                        key={i.key}
+                                        to={i.key}
+                                        onClick={() => setIsToggled(false)}>
+                                        {i.label}
+                                    </NavLink>                                
+                                ))}
+
+                                <Link className={`Navbar__button`}
+                                    to="/sitio">
+                                    Conheça o Sítio
+                                </Link>'
+                            </>)}
                         </div>
                     </div>
                 </div>

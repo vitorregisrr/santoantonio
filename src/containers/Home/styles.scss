@@ -1,10 +1,256 @@
 @import 'assets/scss/variables/__all.scss';
 
-.Home{
-    .PageBanner__title{
-        @media screen and (max-width: $bp-MD){
-            font-size: 57px;
-            margin-bottom: -18px;
+.Home {
+    position: relative;
+    max-height: 100vh;
+    height: 100vh;
+    max-width: 100%;
+    overflow: hidden;
+
+    &__side {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 50%;
+        transition: z-index 0.9s, width 0.5s;
+        z-index: 0;
+        @media screen and (max-width: $bp-LG) {
+            height: 50vh;
+            width: 100%;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            object-fit: cover;
+            height: 100%;
+            z-index: 1;
+            background-size: 100%;
+        }
+
+        &.right {
+            right: 0;
+            left: unset;
+
+            @media screen and (min-width: $bp-LG) {
+                &[data-canHover="true"]:hover {
+                    border-left: 1.4px solid rgba(157, 135, 85, 0.562);
+
+                    .Home__side-title {
+                        padding-left: 220px;
+                        top: 50%;
+                        @media screen and (max-width: 1200px) {
+                            padding-left: 250px;
+                        }
+                    }
+                }
+            }
+            @media screen and (max-width: 1250px) {
+                .Home__side-title {
+                    font-size: 60px;
+                }
+            }
+
+            @media screen and (max-width: $bp-LG) {
+                right: unset;
+                top: unset;
+                left: 0;
+                bottom: 1px;
+
+                .Home__side-title {
+                    font-size: 50px;
+                    white-space: normal;
+                    text-align: center;
+                }
+            }
+        }
+
+        &.left {
+            @media screen and (min-width: $bp-LG) {
+                &[data-canHover="true"]:hover {
+                    border-right: 1.4px solid rgba(157, 135, 85, 0.562);
+
+                    .Home__side-title {
+                        padding-right: 230px;
+                        top: 50%;
+                    }
+                }
+            }
+        }
+
+        &[data-canHover="true"]:hover {
+            width: 95%;
+            z-index: 3;
+            transition: all 0.5s;
+
+            @media screen and (max-width: $bp-LG){
+                width: 100%;
+            }
+        }
+
+        &-title {
+            font-family: 'Lowan';
+            font-size: 69px;
+            color: rgba(247, 246, 241, 0.327);
+            position: absolute;
+            left: 50%;
+            top: 80%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            text-decoration: none;
+            transition: all 0.5s;
+            text-transform: uppercase;
+            white-space: nowrap;
+
+            @media screen and (max-width: $bp-LG) {
+                top: 50%;
+                font-size: 50px;
+            }
+
+            &[data-canHover="true"]:hover {
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__center {
+        position: absolute;
+        transform: translateX(-50%);
+        left: 50%;
+        top: 0;
+        height: 100%;
+        z-index: 4;
+        @media screen and (max-width: $bp-LG) {
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 0;
+            transform: translateY(-50%);
+        }
+
+        &-bottom,
+        &-middle,
+        &-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1.7px;
+            background-color: rgba(157, 135, 85, 0.562);
+            height: 37%;
+            transition: all 0.5s;
+
+            @media screen and (max-width: $bp-LG) {
+                height: 1.7px;
+                width: 23%;
+                top: -1px;
+            }
+        }
+
+        &-middle {
+            height: 26%;
+            opacity: 0.3;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s;
+
+            @media screen and (max-width: $bp-LG) {
+                left: 50%;
+                top: -1px;
+                height: 1.7px;
+                transform: translateX(-50%);
+                width: 70%;
+                opacity: 0.3;
+
+            }
+        }
+
+        &-bottom {
+            top: unset;
+            bottom: 0;
+            transition: all 0.6s;
+            @media screen and (max-width: $bp-LG) {
+                top: -1px;
+                bottom: unset;
+                left: unset;
+                right: 0;
+            }
+        }
+
+        &-brand {
+            position: absolute;
+            width: 300px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.5s;
+            pointer-events: none;
+
+            @media screen and (max-width: $bp-LG) {
+                width: 170px;
+                margin-left: 2px;
+                padding-bottom: 27px;
+            }
+        }
+        @media screen and (min-width: $bp-LG) {
+            &[data-hasHover="left"] {
+                .Home__center-brand {
+                    transform: translate(15%, -50%);
+                }
+
+                .Home__center-top {
+                    height: 22%;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    @media screen and (max-width: 1400px){
+                        height: 25%;
+                    }
+                }
+
+                .Home__center-middle {
+                    opacity: 0;
+                }
+
+                .Home__center-bottom {
+                    opacity: 0;
+                    transition: none;
+                }
+            }
+
+            &[data-hasHover="right"] {
+                .Home__center-brand {
+                    transform: translate(-480px, -50%);
+                    @media screen and (max-width: 1300px) {
+                        transform: translate(-490px, -50%);
+                    }
+                    @media screen and (max-width: 1200px) {
+                        transform: translate(-430px, -50%);
+                    }
+                }
+
+                .Home__center-top {
+                    height: 25%;
+                    top: 50%;
+                    left: -150px;
+                    transform: translateY(-50%);
+                    @media screen and (max-width: 1300px) {
+                        left: -105px;
+                    }
+                }
+
+                .Home__center-middle {
+                    opacity: 0;
+                }
+
+                .Home__center-bottom {
+                    opacity: 0;
+                    transition: none;
+                }
+
+            }
         }
     }
 }

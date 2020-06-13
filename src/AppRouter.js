@@ -8,14 +8,24 @@ import Home from 'containers/Home'
 import Error404 from 'containers/Error/404'
 
 // Hipica
-import HipicaHistoria from 'containers/HipicaHistoria'
-import HipicaEquipe from 'containers/HipicaEquipe'
-import HipicaIntegrante from 'containers/HipicaIntegrante'
-import HipicaCavalos from 'containers/HipicaCavalos'
-import HipicaCavalo from 'containers/HipicaCavalo'
-import HipicaResultados from 'containers/HipicaResultados'
-import HipicaEventos from 'containers/HipicaEventos'
-import HipicaMidia from 'containers/HipicaMidia'
+import HipicaHome from 'containers/hipica/Home'
+import HipicaHistoria from 'containers/hipica/Historia'
+import HipicaEquipe from 'containers/hipica/Equipe'
+import HipicaIntegrante from 'containers/hipica/Integrante'
+import HipicaCavalos from 'containers/hipica/Cavalos'
+import HipicaCavalo from 'containers/hipica/Cavalo'
+import HipicaResultados from 'containers/hipica/Resultados'
+import HipicaEventos from 'containers/hipica/Eventos'
+import HipicaMidia from 'containers/hipica/Midia'
+
+// Sitio
+import SitioHome from 'containers/sitio/Home'
+import SitioHistoria from 'containers/sitio/Historia'
+import SitioQuemSomos from 'containers/sitio/Quemsomos'
+import SitioPaddock from 'containers/sitio/Paddock'
+import SitioFauna from 'containers/sitio/Fauna'
+import SitioFlora from 'containers/sitio/Flora'
+import SitioTour from 'containers/sitio/Tour'
 
 const AppRouter = ({location}) => {
     const routes = [
@@ -24,14 +34,16 @@ const AppRouter = ({location}) => {
             name: 'Home',
             Component: Home,
             exact: true
-        },{
-            path: '/',
-            name: 'Erro 404',
-            Component: Error404,
-            exact: false
         },
 
         // Hipica
+        {
+            path: '/hipica',
+            name: 'Hípica',
+            Component: HipicaHome,
+            exact: true
+
+        },
         {
             path: '/hipica/historia',
             name: 'História',
@@ -80,6 +92,12 @@ const AppRouter = ({location}) => {
 
         // Sitio
         {
+            path: '/sitio',
+            name: 'Sítio',
+            Component: SitioHome,
+            exact: true
+        },
+        {
             path: '/sitio/historia',
             name: 'Histõria',
             Component: SitioHistoria,
@@ -115,6 +133,13 @@ const AppRouter = ({location}) => {
             Component: SitioTour,
             exact: true
         }
+
+        ,{
+            path: '/',
+            name: 'Erro 404',
+            Component: Error404,
+            exact: false
+        },
     ];
     
     return (
