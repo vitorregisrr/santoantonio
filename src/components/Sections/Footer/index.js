@@ -5,9 +5,10 @@ import './styles.scss';
 const Footer = (props) => {
     return (
         <footer className="Footer wow fadeInUp">
-           <h3 className="Footer__brand">Chico Brandão</h3>
+           <img className="Footer__brand" src={require('../../../assets/images/brands/footer.png')}/>
+           <hr/>
            <p className="Footer__copy">
-           © 2020 Chiquinho Brandão. Todos os direitos reservados.
+           © 2020 Sítio Santo Antônio. Todos os direitos reservados.
            </p>
         </footer>
     )

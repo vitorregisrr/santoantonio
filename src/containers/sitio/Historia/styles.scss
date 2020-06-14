@@ -1,10 +1,27 @@
 @import 'assets/scss/variables/__all.scss';
 
 .Historia{
-    .PageBanner__title{
-        @media screen and (max-width: $bp-MD){
-            font-size: 57px;
-            margin-bottom: -18px;
+    .img-1{
+        padding-top: 240px;
+
+        @media screen and (max-width: $bp-LG){
+            padding-top: 0;
+        }
+    }
+
+    .legenda-1{
+        position: absolute;
+        top: 90px;
+        left: -210px;
+        max-width: 300px;
+
+        @media screen and (max-width: $bp-LG){
+            left: 10%;
+            top: 0;
+            transform: translateY(-50%);
+            padding: 15px;
+            font-size: 14px;
+            max-width: 200px;
         }
     }
 }

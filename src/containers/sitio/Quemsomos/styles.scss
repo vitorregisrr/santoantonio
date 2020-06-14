@@ -1,10 +1,94 @@
 @import 'assets/scss/variables/__all.scss';
 
-.Quemsomos{
-    .PageBanner__title{
-        @media screen and (max-width: $bp-MD){
+.Quemsomos {
+    .PageBanner__title {
+        @media screen and (max-width: $bp-MD) {
             font-size: 57px;
             margin-bottom: -18px;
+        }
+    }
+
+    .galeria-1 {
+        transform: translateY(-340px);
+
+        @media screen and (max-width: $bp-LG) {
+            transform: translateY(-200px);
+        }
+
+
+        @media screen and (max-width: $bp-SM){
+            img{
+                width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        }
+    }
+
+    .overlay-1 {
+        margin-top: 340px;
+
+        @media screen and (max-width: $bp-LG) {
+            margin-top: 200px;
+        }
+    }
+
+    .overlay-2{
+        margin-top: -280px;
+
+        
+        @media screen and (max-width: $bp-LG) {
+            margin-top: -180px;
+        }
+    }
+
+    .img-2 {
+        transform: translateY(100px);
+        margin-left: -20px;
+
+        @media screen and (max-width: $bp-LG) {
+            margin-left: 0;
+            margin-top: 10px;
+            transform: translateY(0);
+        }
+    }
+
+    .legenda-1{
+        position: absolute;
+        top: 280px;
+        left: -180px;
+        max-width: 300px;
+        text-align: right;
+
+        @media screen and (max-width: $bp-LG){
+            left: 50%;
+            bottom: -10px;
+            text-align: center;
+            top: unset;
+            transform: translateX(-50%);
+            padding: 15px;
+            font-size: 14px;
+            width: 280px;
+        }
+    }
+
+    .legenda-2{
+        position: absolute;
+        top: 140px;
+        right: -120px;
+        max-width: 270px;
+        text-align: left;
+
+        @media screen and (max-width: $bp-LG){
+            left: unset;
+            left: 50%;
+            bottom: -10px;
+            text-align: center;
+            top: unset;
+            transform: translateX(-50%);
+            padding: 15px;
+            font-size: 14px;
+            width: 280px;
         }
     }
 }
