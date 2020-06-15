@@ -75,20 +75,22 @@ const GallerySlider = (props) => {
                             <button class="GallerySlider__arrow right" onClick={moveNext}></button>
                         </div>
                     </footer>
-                </section> < GalleryModal
-            currentItem = {
-                currIndex
-            }
-            closeModal = {
-                () => setShowGaleriaModal(false)
-            }
-            visible = {
-                showGaleriaModal
-            }
-            items = {
-                sliderData
-            } /> </> : null
-}
+                </section> 
+                
+                <GalleryModal
+                    currentItem = {
+                        currIndex
+                    }
+                    closeModal = {
+                        () => setShowGaleriaModal(false)
+                    }
+                    visible = {
+                        showGaleriaModal
+                    }
+                    items = {
+                        sliderData
+                    } /> </> : null
+                }
         </React.Fragment>
     )
 }

@@ -94,7 +94,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         }
 
         &-home {
-            padding-left: 60px;
+            padding-left: 0px;
             transition: opacity 0.3s;
             
             img{
@@ -122,7 +122,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
 
         button {
             position: relative;
-            left: 40px;
+            left: 84%;
             top: -43px;
             background: none;
             border: none;
@@ -310,6 +310,10 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
 
         @media screen and (max-width: 1250px){
             margin-left: 0;
+        }
+
+        @media screen and (max-width: $bp-MD){
+            margin-top: 6px;
         }
     }
 }

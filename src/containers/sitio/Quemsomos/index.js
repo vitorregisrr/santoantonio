@@ -79,7 +79,7 @@ const QuemSomos = (props) => {
 
             <div className="bg-bege overlay-1">
                 <div className="container">
-                    <div className="galeria-1">
+                    <div className="galeria-1 galeria">
                         <div className="row">
                             <div className="col-12 col-sm-6 col-lg-2 d-none d-lg-block"></div>
                             <div className="col-12 col-sm-6 col-lg-6 d-flex align-items-center">

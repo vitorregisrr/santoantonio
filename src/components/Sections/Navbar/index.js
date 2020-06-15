@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {NavLink, withRouter, Link} from 'react-router-dom'
+import {animateScroll} from 'react-scroll'
 
 import brandImage from '../../../assets/images/brands/capa.svg'
 import './styles.scss';
@@ -57,6 +58,10 @@ const Navbar = ({location}) => {
         }
     ];
 
+    const clickLink = () => {
+        animateScroll.scrollToTop({duration: 200});
+        setIsToggled(false);
+    }
     return (
         <React.Fragment>
             <div
@@ -114,7 +119,7 @@ const Navbar = ({location}) => {
                                         className={`Navbar__item`}
                                         key={i.key}
                                         to={i.key}
-                                        onClick={() => setIsToggled(false)}>
+                                        onClick={() => clickLink()}>
                                         {i.label}
                                     </NavLink>                                
                                 ))}
