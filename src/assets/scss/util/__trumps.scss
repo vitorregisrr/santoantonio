@@ -98,6 +98,16 @@ button {
             color: #831313 !important;
         }
 
+        .author{
+            display: block;
+            margin-top: 40px;
+            color: #9D8855;
+            text-transform: uppercase;
+            font-size: 19px;
+            text-align: right;
+            font-weight: 500;
+        }
+
         h2 {
             color: #9D8855;
             font-family: 'Lowan';
@@ -606,8 +616,12 @@ button {
 .img-legenda{
     background-color: #0A221D;
     border: 1px solid #EDE9D8;
-    padding: 30px;
+    padding: 22px 30px;
     font-weight: lighter;
     color: rgba(255, 255, 255, 0.892);
     font-size: 17px;
+}
+
+.ico-camera{
+    width: 80px !important;
 }

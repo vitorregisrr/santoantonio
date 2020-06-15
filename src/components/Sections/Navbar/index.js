@@ -83,6 +83,7 @@ const Navbar = ({location}) => {
                 className={`Navbar ${isToggled
                 ? 'toggled'
                 : ''}`}>
+                    
                 <div className="container">
                     <div
                         className={`Navbar__content ${isToggled

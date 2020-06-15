@@ -7,4 +7,24 @@
             margin-bottom: -18px;
         }
     }
+
+    .legenda-1{
+        position: absolute;
+        top: 50px;
+        right: -120px;
+        max-width: 270px;
+        text-align: left;
+
+        @media screen and (max-width: $bp-LG){
+            left: unset;
+            left: 50%;
+            bottom: -10px;
+            text-align: center;
+            top: unset;
+            transform: translateX(-50%);
+            padding: 15px;
+            font-size: 14px;
+            width: 280px;
+        }
+    }
 }
