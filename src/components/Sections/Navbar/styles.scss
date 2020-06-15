@@ -94,7 +94,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         }
 
         &-home {
-            padding-left: 0px;
+            padding-left: 14px;
             transition: opacity 0.3s;
             
             img{
@@ -122,7 +122,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
 
         button {
             position: relative;
-            left: 84%;
+            left: 90%;
             top: -43px;
             background: none;
             border: none;
