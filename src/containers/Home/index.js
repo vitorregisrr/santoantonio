@@ -42,7 +42,7 @@ const Home = (props) => {
         if(!opt){
             setCanHover(false)
             setHasHover(false)
-            setTimeout(() => setCanHover(true), 300)
+            setTimeout(() => setCanHover(true), 400)
         }
         
         if(canHover){
@@ -56,7 +56,7 @@ const Home = (props) => {
 
     return (
         <section className="Home page-interna">
-            <div class="Home__side left" data-canHover={canHover} onMouseEnter={() => toggleHover('left')} onMouseLeave={() => toggleHover(false)}>
+            <div class="Home__side left" data-canHover={canHover } onMouseEnter={() => toggleHover('left')} onMouseLeave={() => toggleHover(false)}>
                 <img
                     className="background"
                     src={bgSitio}/>
