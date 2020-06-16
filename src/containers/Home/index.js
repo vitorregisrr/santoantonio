@@ -42,7 +42,7 @@ const Home = (props) => {
         if(!opt){
             setCanHover(false)
             setHasHover(false)
-            setTimeout(() => setCanHover(true), 400)
+            setTimeout(() => setCanHover(true), 200)
         }
         
         if(canHover){
