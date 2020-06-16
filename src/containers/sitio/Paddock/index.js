@@ -4,6 +4,7 @@ import {getStorage, setStorage} from 'util/storage';
 import {Link} from 'react-router-dom';
 
 import GallerySlider from '../../../components/Sections/GallerySlider/'
+import VideoPlayer from '../../../components/Sections/VideoPlayer/'
 
 import './styles.scss';
 
@@ -118,7 +119,12 @@ const Paddock = (props) => {
                     }
                 ]}/>
             </div>
-            {/* <VideoPlayer /> */}
+
+            <div className="container mt-3 mt-lg-5 pt-lg-2">
+                <VideoPlayer
+                    url="https://www.youtube.com/embed/UVuYEX0mZ0M"
+                    image={require('../../../assets/images/backgrounds/home-hipica.png')}/>
+            </div>
 
             <div className="container">
                 <div className="d-flex justify-content-center mt-5 pt-lg-3">
