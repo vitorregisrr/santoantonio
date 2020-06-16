@@ -60,7 +60,7 @@ const Flora = (props) => {
             <div className="bg-bege">
                 <div className="container sm">
                     <div className="markup">
-                        <h4 className="mt-3">
+                        <h4 className="mt-0">
                             O horto antigo
                         </h4>
                         <p>

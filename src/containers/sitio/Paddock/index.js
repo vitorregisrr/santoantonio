@@ -1,6 +1,7 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
 import {getStorage, setStorage} from 'util/storage';
+import {Link} from 'react-router-dom';
 
 import GallerySlider from '../../../components/Sections/GallerySlider/'
 
@@ -110,15 +111,22 @@ const Paddock = (props) => {
                     class="ico-camera"
                     alt="Ícone camera"/>
             </div>
-
             <div className="container pt-5">
-            <GallerySlider items={[
-                    {
+                <GallerySlider
+                    items={[{
                         imagem: require('../../../assets/images/thumbs/s-p-3.png')
                     }
                 ]}/>
             </div>
             {/* <VideoPlayer /> */}
+
+            <div className="container">
+                <div className="d-flex justify-content-center mt-5 pt-lg-3">
+                    <Link to="/hipica" className="Paddock__btn">
+                        Conheça a equipe hípica
+                    </Link>
+                </div>
+            </div>
         </section>
     )
 }

@@ -27,4 +27,22 @@
             width: 280px;
         }
     }
+
+    &__btn{
+        font-size: 17px;
+        text-transform: uppercase;
+        color: #9D8855;
+        padding: 10px 60px;
+        border: 1px solid #9D8855;
+        transition: all 0.5s;
+
+        @media screen and (max-width: $bp-LG){
+            padding: 10px 40px;
+        }
+
+        &:hover{
+            background-color: #9D8855;
+            color: #fff;
+        }
+    }
 }
