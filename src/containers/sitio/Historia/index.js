@@ -118,7 +118,7 @@ const Hipismo = (props) => {
             <div className="container">
                 <div className="row my-5 py-lg-4">
                     <div className="col-lg-5 position-relative">
-                        <img src={require('../../../assets/images/thumbs/s-historia-1.png')} class="img-1" alt=""/>
+                        <img src={require('../../../assets/images/thumbs/s-h-2.png')} class="img-1" alt=""/>
                     </div>
                     <div className="col-lg-7 position-relative">
                         <img src={require('../../../assets/images/thumbs/s-historia-1.png')} alt=""/>
@@ -149,7 +149,7 @@ const Hipismo = (props) => {
                         <img src={require('../../../assets/images/thumbs/s-historia-2.png')} alt=""/>
                     </div>
                     <div className="col-lg-6">
-                        <img src={require('../../../assets/images/thumbs/s-historia-2.png')} alt=""/>
+                        <img src={require('../../../assets/images/thumbs/s-h-1.png')} alt=""/>
                     </div>
                 </div>
             </div>
