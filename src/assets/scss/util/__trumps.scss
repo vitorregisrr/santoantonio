@@ -610,6 +610,9 @@ button {
 }
 
 .ico-camera {
+    display: block;
+    object-fit: contain;
+    height: 80px !important;
     width: 80px !important;
 }
 
