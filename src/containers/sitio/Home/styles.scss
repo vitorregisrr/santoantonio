@@ -5,6 +5,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100vh;
 
     &__bg {
         position: absolute;
@@ -81,18 +82,19 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         @media screen and (max-width: $bp-LG){
             flex-direction: column;
             padding-bottom: 0;
+            width: 100vw;
         }
 
         &-title {
             font-family: 'Lowan';
-            font-size: 68px;
+            font-size: 72px;
             color: #F7F6F1;
             text-transform: uppercase;
             opacity: 0.3;
             font-weight: normal;
 
             @media screen and (max-width: $bp-LG){
-                font-size: 50px;
+                font-size: 57px;
             }
 
             @media screen and (max-width: 330px){
@@ -102,15 +104,16 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
 
         &-div {
             display: block;
-            height: 180px;
+            height: 198px;
             width: 1px;
             background-color: #9D8855;
-            margin: 0 40px;
+            margin: 0 50px 0 40px;
             opacity: 0.6;
 
             @media screen and (max-width: $bp-LG){
                 height: 1px;
                 width: 100vw;
+                margin: -25px 0 -17px 0;
                 opacity: .5;
             }
         }
@@ -142,7 +145,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         width: 100%;
         background-color: #0a221dbb;
         border-top: 1.4px solid #ede9d8b0;
-        padding: 50px 60px;
+        padding: 50px 60px 70px 60px;
         z-index: 2;
 
         @media screen and (max-width: 1320px) {
@@ -164,7 +167,8 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
             align-items: center;
             width: 100%;
             max-width: 1300px;
-
+            justify-content: space-between;
+            
             @media screen and (max-width: $bp-LG) {
                 position: absolute;
                 top: 0;
@@ -202,6 +206,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
                 width: 100%;
             }
 
+
             &:hover {
                 .title{
                     color: #fff;
@@ -211,6 +216,14 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
             @media screen and(min-width: 1300px) {
                 &:first-child {
                     padding: 0 20px;
+                }
+
+                &:last-child{
+                    min-width: 200px;
+                }
+
+                &:nth-last-child(2){
+                    min-width: 250px;
                 }
             }
 
@@ -256,6 +269,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
                 @media screen and (max-width: $bp-LG){
                     margin-bottom: 15px;
                     text-align: center;
+                    margin-top: 7px;
                 }
             }
         }

@@ -123,7 +123,7 @@ const Home = (props) => {
                 <div className="Home__menu-list" data-show={isToggled}>
                     <Link to="/sitio/historia" className="Home__menu-item">
                         <span className="title">História</span>
-                        <span className="desc">A história do Sítio Santo Antônio</span>
+                        <span className="desc">A história do Sítio <br class="d-none d-lg-block"/>Santo Antônio</span>
                     </Link>
                     <Link to="/sitio/quemsomos" className="Home__menu-item">
                         <span className="title">Quem Somos</span>
@@ -131,19 +131,19 @@ const Home = (props) => {
                     </Link>
                     <Link to="/sitio/paddock" className="Home__menu-item">
                         <span className="title">Paddock</span>
-                        <span className="desc">Centro de treinamento equestre</span>
+                        <span className="desc">Centro de treinamento<br class="d-none d-lg-block"/> equestre</span>
                     </Link>
                     <Link to="/sitio/fauna" className="Home__menu-item">
                         <span className="title">Fauna</span>
-                        <span className="desc">Santuário de animais</span>
+                        <span className="desc">Santuário<br class="d-none d-lg-block"/> de animais</span>
                     </Link>
                     <Link to="/sitio/flora" className="Home__menu-item">
                         <span className="title">Flora</span>
-                        <span className="desc">Recuperação e preservação da natureza</span>
+                        <span className="desc">Recuperação e <br class="d-none d-lg-block"/> preservação da natureza</span>
                     </Link>
                     <Link to="/sitio/tour" className="Home__menu-item">
                         <span className="title">Tour</span>
-                        <span className="desc">Faça um tour por cada setor do sítio</span>
+                        <span className="desc">Faça um tour por <br class="d-none d-lg-block"/>cada setor do sítio</span>
                     </Link>
                 </div>
             </nav>
