@@ -1,31 +1,32 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import {Route, Switch, withRouter} from 'react-router-dom'
 import PageTransition from 'react-router-page-transition'
 import {Helmet} from "react-helmet"
 
+import Spinner from './components/UI/Spinner/Spinner'
 // Import Containers (Pages)
-import Home from 'containers/Home'
-import Error404 from 'containers/Error/404'
+const Home = React.lazy(() => import ('containers/Home'))
+const Error404 = React.lazy(() => import ('containers/Error/404'))
 
 // Hipica
-import HipicaHome from 'containers/hipica/Home'
-import HipicaHistoria from 'containers/hipica/Historia'
-import HipicaEquipe from 'containers/hipica/Equipe'
-import HipicaIntegrante from 'containers/hipica/Integrante'
-import HipicaCavalos from 'containers/hipica/Cavalos'
-import HipicaCavalo from 'containers/hipica/Cavalo'
-import HipicaResultados from 'containers/hipica/Resultados'
-import HipicaEventos from 'containers/hipica/Eventos'
-import HipicaMidia from 'containers/hipica/Midia'
+const HipicaHome = React.lazy(() => import ('containers/hipica/Home'))
+const HipicaHistoria = React.lazy(() => import ('containers/hipica/Historia'))
+const HipicaEquipe = React.lazy(() => import ('containers/hipica/Equipe'))
+const HipicaIntegrante = React.lazy(() => import ('containers/hipica/Integrante'))
+const HipicaCavalos = React.lazy(() => import ('containers/hipica/Cavalos'))
+const HipicaCavalo = React.lazy(() => import ('containers/hipica/Cavalo'))
+const HipicaResultados = React.lazy(() => import ('containers/hipica/Resultados'))
+const HipicaEventos = React.lazy(() => import ('containers/hipica/Eventos'))
+const HipicaMidia = React.lazy(() => import ('containers/hipica/Midia'))
 
 // Sitio
-import SitioHome from 'containers/sitio/Home'
-import SitioHistoria from 'containers/sitio/Historia'
-import SitioQuemSomos from 'containers/sitio/Quemsomos'
-import SitioPaddock from 'containers/sitio/Paddock'
-import SitioFauna from 'containers/sitio/Fauna'
-import SitioFlora from 'containers/sitio/Flora'
-import SitioTour from 'containers/sitio/Tour'
+const SitioHome = React.lazy(() => import ('containers/sitio/Home'))
+const SitioHistoria = React.lazy(() => import ('containers/sitio/Historia'))
+const SitioQuemSomos = React.lazy(() => import ('containers/sitio/Quemsomos'))
+const SitioPaddock = React.lazy(() => import ('containers/sitio/Paddock'))
+const SitioFauna = React.lazy(() => import ('containers/sitio/Fauna'))
+const SitioFlora = React.lazy(() => import ('containers/sitio/Flora'))
+const SitioTour = React.lazy(() => import ('containers/sitio/Tour'))
 
 const AppRouter = ({location}) => {
     const routes = [
@@ -43,8 +44,7 @@ const AppRouter = ({location}) => {
             Component: HipicaHome,
             exact: true
 
-        },
-        {
+        }, {
             path: '/hipica/historia',
             name: 'História',
             Component: HipicaHistoria,
@@ -56,11 +56,11 @@ const AppRouter = ({location}) => {
             Component: HipicaEquipe,
             exact: true
 
-        },{
+        }, {
             path: '/hipica/integrante',
             name: 'Integrante',
             Component: HipicaIntegrante,
-            exact:false
+            exact: false
 
         }, {
             path: '/hipica/cavalos',
@@ -96,52 +96,44 @@ const AppRouter = ({location}) => {
             name: 'Sítio',
             Component: SitioHome,
             exact: true
-        },
-        {
+        }, {
             path: '/sitio/historia',
             name: 'Histõria',
             Component: SitioHistoria,
             exact: true
-        },
-        {
+        }, {
             path: '/sitio/quemsomos',
             name: 'Quem Somos',
             Component: SitioQuemSomos,
             exact: true
-        },
-        {
+        }, {
             path: '/sitio/paddock',
             name: 'Paddock',
             Component: SitioPaddock,
             exact: true
-        },
-        {
+        }, {
             path: '/sitio/fauna',
             name: 'Fauna',
             Component: SitioFauna,
             exact: true
-        },
-        {
+        }, {
             path: '/sitio/flora',
             name: 'Flora',
             Component: SitioFlora,
             exact: true
-        }, 
-        {
+        }, {
             path: '/sitio/tour',
             name: 'Tour',
             Component: SitioTour,
             exact: true
-        }
-
-        ,{
+        }, {
             path: '/',
             name: 'Erro 404',
             Component: Error404,
             exact: false
-        },
+        }
     ];
-    
+
     return (
         <PageTransition timeout={800}>
             <Switch location={location}>
@@ -151,7 +143,9 @@ const AppRouter = ({location}) => {
                             <Helmet>
                                 <title>Santo Antônio • {name}</title>
                             </Helmet>
-                            <Component/>
+                            <Suspense fallback={<Spinner fullscreen />}>
+                                <Component/>
+                            </Suspense>
                         </div>
                     </Route>
                 ))}
