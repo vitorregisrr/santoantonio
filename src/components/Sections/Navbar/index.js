@@ -38,23 +38,23 @@ const Navbar = ({location}) => {
 
     const hipicaItems = [
         {
-            key: '/sitio/historia',
+            key: '/hipica/historia',
             label: 'História'
         }, {
-            key: '/sitio/quemsomos',
-            label: 'Quem Somos'
+            key: '/hipica/equipe',
+            label: 'Equipe'
         }, {
-            key: '/sitio/paddock',
-            label: 'Paddock'
+            key: '/hipica/cavalos',
+            label: 'Cavalos'
         }, {
-            label: 'Fauna',
-            key: '/sitio/fauna'
+            label: 'Resultados',
+            key: '/hipica/resultados'
         }, {
-            label: 'Flora',
-            key: '/sitio/flora'
+            label: 'Eventos',
+            key: '/hipica/eventos'
         }, {
-            label: 'Tour',
-            key: '/sitio/tour'
+            label: 'Mídia',
+            key: '/hipica/midia'
         }
     ];
 
@@ -107,7 +107,8 @@ const Navbar = ({location}) => {
                             <div className="Navbar__div"></div>
 
                             <Link className="Navbar__caption">
-                                Sítio
+                            {/sitio/.test(location.pathname) && 'Sítio'}
+                            {/hipica/.test(location.pathname) && 'Equipe Hípica'}
                             </Link>
                         </div>
                         <div className="Navbar__links">

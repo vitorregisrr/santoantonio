@@ -1,0 +1,58 @@
+@import 'assets/scss/variables/__all.scss';
+
+.CavaloLink{
+    display: block;
+    margin-bottom: 30px;
+    width: 100%;
+
+    &__img{
+        width: 100%;
+        margin-bottom: 20px;
+        transition: all 0.5s;
+
+        img{
+            width: 100%;
+        }
+    }
+
+    &__caption{
+        display: flex;
+        flex-direction: column;
+        @media screen and (max-width: $bp-MD){
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .nome{
+            color: #9D8855;
+            font-family: 'Lowan';
+            font-size: 24px;
+            font-weight: bold;
+            margin-right: 8px;
+            margin-bottom: 12px;
+        }
+
+        .pais{
+            font-size: 17px;
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+
+        .nascimento{
+            color: #484848c4;
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .detalhes{
+            font-size: 12px;
+            color: #484848b2;
+        }
+    }
+
+    &:hover{
+        .CavaloLink__img{
+            transform: scale(1.03);
+        }
+    }
+}

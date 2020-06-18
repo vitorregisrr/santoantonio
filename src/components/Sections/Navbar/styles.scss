@@ -6,7 +6,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
     left: 0;
     top: 0;
     width: 100vw;
-    height: 110px;
+    height: 123px;
     background-color: #0A221D;
     z-index: 11;
     
@@ -53,9 +53,9 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
 
     &__div{
         height: 100%;
-        width: 1.5px;
+        width: 1.6px;
         background-color: #fff;
-        opacity: .3;
+        opacity: .6;
         margin: 0 25px;
 
         @media screen and (max-width: $bp-LG){

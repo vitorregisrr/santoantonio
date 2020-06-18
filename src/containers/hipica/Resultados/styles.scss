@@ -1,10 +1,82 @@
 @import 'assets/scss/variables/__all.scss';
 
 .Resultados{
-    .PageBanner__title{
-        @media screen and (max-width: $bp-MD){
-            font-size: 57px;
-            margin-bottom: -18px;
-        }
+    &__list{
+        display: flex;
+        flex-direction: column;
     }
+    
+    &__item{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #9D8855;
+        padding: 17px 0;
+        width: 100%;
+
+        @media screen and (max-width: $bp-MD){
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+        &-resultado{
+            font-weight: 500;
+            font-size: 17px;
+
+            @media screen and (max-width: $bp-MD){
+                margin-top: 15px;
+            }
+        }
+
+        &-nomes{
+            display: flex;
+            flex-direction: column;
+            color: #484848;
+            font-weight: lighter;
+            font-size: 17px;
+
+            .cavaleiro{
+                position: relative;
+                display: block;
+                padding-left: 34px;
+                margin-bottom: 7px;
+
+                &:after{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 27px;
+                    left: 0;
+                    background-image: url(../../../assets/images/ico/cavaleiro.svg);
+                    background-position: left center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+
+            .cavalo{
+                position: relative;
+                display: block;
+                padding-left: 34px;
+
+                &:after{
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    height: 100%;
+                    width: 27px;
+                    left: 0;
+                    background-image: url(../../../assets/images/ico/cavalo.svg);
+                    background-position: left center;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+        
+    }
+
+    
 }

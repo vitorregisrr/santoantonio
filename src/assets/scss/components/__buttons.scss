@@ -1,0 +1,46 @@
+.btn-default{
+    color: #9D8855;
+    font-size: 17px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0);
+    border: 0.7px solid #9D8855;
+    transition: all 0.4s;
+    white-space: nowrap;
+    font-weight: 400;
+
+
+    &.w-m{
+        display: block;
+        width: 66% !important;
+        margin: 0 auto;
+    } 
+
+    &.w-80{
+        display: block;
+        width: 80% !important;
+        margin: 0 auto;
+    } 
+    
+    @media screen and (max-width: $bp-LG){
+        white-space: normal;
+    }
+
+    &:hover, &.active{
+        background-color: #9D8855;
+        color: #fff;
+    }
+}
+
+.btn-sm{
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 12px;
+    background-color: #9D8855;
+    border: none !important;
+    color: #fff;
+    transition: all 0.4s;
+    
+    &:hover{
+        transform: scale(1.04);
+    }
+}

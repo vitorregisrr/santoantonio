@@ -1,10 +1,13 @@
 @import 'assets/scss/variables/__all.scss';
 
-.Historia{
-    .PageBanner__title{
-        @media screen and (max-width: $bp-MD){
-            font-size: 57px;
-            margin-bottom: -18px;
-        }
+.Historia-h{
+
+    .overlay-1{
+        padding-bottom: 300px;
+    }
+    
+    .galeria-1{
+        margin-bottom: -300px;
+        transform: translateY(-300px);
     }
 }
