@@ -1,0 +1,192 @@
+@import 'assets/scss/variables/__all.scss';
+
+@media screen and (max-width: $bp-MD) {
+    .GenealogiaTable__overflow {
+        width: 100%;
+        overflow-x: scroll;
+    }
+}
+
+.GenealogiaTable {
+    @media screen and (max-width: $bp-MD) {
+        width: 700px;
+        padding-right: 20px;
+    }
+
+    &__header {
+        display: flex;
+        background-color: #F7F6F1;
+        color: #9D8855;
+        font-weight: 500;
+        padding: 17px 50px;
+        margin-bottom: 11px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 16px;
+
+        .mae {
+            width: 22%;
+            text-align: left;
+            padding-left: 7%;
+        }
+
+        .avos {
+            width: 36%;
+            padding-left: 35px;
+        }
+
+        .bisavos {
+            width: 30%;
+            padding-left: 30px;
+        }
+
+        .trisavos {
+            width: 25%;
+            text-align: right;
+            padding-right: 20px;
+            @media screen and (max-width: $bp-XL) {
+                padding-right: 0;
+            }
+        }
+        @media screen and (max-width: $bp-LG) {
+            .mae {
+                width: 20%;
+                text-align: left;
+                padding-left: 4%;
+            }
+
+            .avos {
+                width: 36%;
+                padding-left: 35px;
+                padding-right: 15px;
+            }
+
+            .bisavos {
+                width: 30%;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+
+            .trisavos {
+                width: 25%;
+                text-align: right;
+                margin-right: -25px;
+            }
+        }
+    }
+
+    &__table {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+
+        .box {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #484848;
+            white-space: nowrap;
+            font-weight: 500;
+            font-size: 17px;
+            background-color: #fff;
+            z-index: 2;
+        }
+
+        .mae {
+            width: 33%;
+
+            .box {
+                position: relative;
+                width: 76%;
+                height: 210px;
+                @media screen and (max-width: 800px) {
+                    height: 130px;
+                }
+                &:after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    height: 200%;
+                    right: 0;
+                    top: 50%;
+                    transform: translate(100%, -50%);
+                    height: 108%;
+                    width: 32%;
+                    background-image: url('../../../assets/images/ico/genealogia-1.png');
+                    background-size: 100% 100%;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        .avos {
+            width: 25%;
+
+            .box {
+                height: 110px;
+                width: 65%;
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    height: 200%;
+                    right: 0;
+                    top: 50%;
+                    transform: translate(100%, -50%);
+                    height: 102%;
+                    width: 55%;
+                    background-image: url('../../../assets/images/ico/genealogia-2.png');
+                    background-size: 100% 100%;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                }
+                &:not(:last-child) {
+                    margin-bottom: 110px;
+                }
+            }
+        }
+
+        .bisavos {
+            width: 27%;
+
+            .box {
+                height: 58px;
+                width: 68%;
+                position: relative;
+                &:after {
+                    content: '';
+                    position: absolute;
+                    z-index: 1;
+                    height: 200%;
+                    right: 0;
+                    top: 50%;
+                    transform: translate(100%, -50%);
+                    height: 102%;
+                    width: 50%;
+                    background-image: url('../../../assets/images/ico/genealogia-3.png');
+                    background-size: 100% 100%;
+                    background-position: center center;
+                    background-repeat: no-repeat;
+                }
+                &:not(:last-child) {
+                    margin-bottom: 55px;
+                }
+            }
+        }
+
+        .trisavos {
+            width: 19%;
+
+            .box {
+                height: 38px;
+                width: 100%;
+                &:not(:last-child) {
+                    margin-bottom: 17px;
+                }
+            }
+        }
+    }
+}

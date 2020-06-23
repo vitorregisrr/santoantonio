@@ -1,10 +1,73 @@
 @import 'assets/scss/variables/__all.scss';
 
-.Midia{
-    .PageBanner__title{
-        @media screen and (max-width: $bp-MD){
-            font-size: 57px;
-            margin-bottom: -18px;
+.MidiaLink {
+    display: flex;
+    align-items: flex-end;
+    height: 280px;
+    background-position: center center;
+    background-size: cover;
+    transition: all 0.4s;
+    overflow: hidden;
+    
+    &__caption {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #0a221dc7;
+        padding: 19px 21px 19px 29px;
+        width: 100%;
+        transition: all 0.4s;
+
+        .data {
+            color: #fff;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-family: 'Roboto', sans-serif;
+            opacity: .9;
+            margin-bottom: 5px;
+        }
+
+        .title {
+            color: #FFFFFF;
+            font-size: 15px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .more{
+            position: absolute;
+            bottom: -20px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 9px;
+            letter-spacing: .4px;
+            opacity: .91;
+            padding: 7px;
+            margin-top: 8px;
+            text-transform: uppercase;
+            border: 0.3px solid #9d8755b2;
+            background: none;
+            color: #fff;
+            opacity: 0;
+            transition: all 0.4s;
+
+            &:hover{
+                background: #9D8855;
+                background-color: #9D8855;
+            }
+        }
+    }
+
+    &:hover {
+        transform: scale(1.02);
+       
+        .MidiaLink__caption{
+            padding-bottom: 50px;
+        }
+
+        .more{
+            opacity: 1;
+            bottom: 20px;
         }
     }
 }

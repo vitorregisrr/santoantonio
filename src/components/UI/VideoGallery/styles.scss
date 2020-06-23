@@ -1,0 +1,53 @@
+@import 'assets/scss/variables/__all.scss';
+
+.VideoGallery {
+    position: relative;
+    width: 100%;
+
+    &__navs {
+        display: flex;
+        align-items: center;
+    }
+
+    &__arrow {
+        transition: all 0.4s;
+
+        &.left {
+            background: none;
+            background-image: url('../../../assets/images/ico/chevron-left.png');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            border: none;
+        }
+
+        &.right {
+            background: none;
+            background-image: url('../../../assets/images/ico/chevron-right.png');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            border: none;
+        }
+        &:hover {
+            transform: scale(1.09);
+            border: none;
+        }
+
+    }
+
+    &__position {
+        color: #747474;
+        font-size: 14px;
+
+        .current {
+            font-weight: 500;
+            color: #9D8855;
+            font-size: 20px;
+        }
+    }
+}

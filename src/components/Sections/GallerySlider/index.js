@@ -14,20 +14,6 @@ const GallerySlider = (props) => {
         setShowGaleriaModal] = useState(false);
 
     useEffect(() => {
-        // let newData = [
-        //     {
-        //         imagem: require('../../../assets/images/thumbs/s-historia-3.png'),
-        //         legenda: 'aaaa'
-        //     }, {
-        //         imagem: require('../../../assets/images/thumbs/s-historia-2.png'),
-        //         legenda: 'aaaa'
-        //     }
-        // ];
-
-        // [1,2,3,4,5,6,7,8,9,10].map( i => {     if(props.data[`slider_foto${i}`]){
-        // newData.push({             imagem: props.data[`slider_foto${i}`], legenda:
-        // props.data[`slider_legenda_foto${i}`]         })     } })
-
         setSliderData(props.items)
     }, [props.items]);
 
@@ -39,11 +25,11 @@ const GallerySlider = (props) => {
         setCurrIndex(old => old >= 1
             ? old - 1
             : sliderData.length - 1);
-        scroll.scrollTo('gallery-img', {offset: -150});
+        scroll.scrollTo('gallery-img', {offset: -140});
     }
 
     const moveNext = () => {
-        scroll.scrollTo('gallery-img', {offset: -150});
+        scroll.scrollTo('gallery-img', {offset: -140, smooth: true});
         setCurrIndex(old => old < sliderData.length - 1
             ? old + 1
             : 0)

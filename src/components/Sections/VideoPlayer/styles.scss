@@ -3,6 +3,7 @@
 .VideoPlayer {
     position: relative;
     width: 100%;
+    cursor: pointer;
 
     &__img {
         position: relative;
@@ -16,6 +17,7 @@
             z-index: 2;
             background-color: #fff;
             opacity: .3;
+            transition: all 0.4s;
         }
 
         img {
@@ -42,6 +44,53 @@
         @media screen and (max-width: $bp-MD){
             width: 90px;
             height: 90px;
+        }
+    }
+
+    &:hover{
+        .overlay{
+            opacity: 0;
+        }
+    }
+    &[data-size="sm"]{
+        .VideoPlayer__play{
+            width: 60px;
+            border: 1px solid #ffffff69;
+            height: 60px;
+            bottom: 0;
+        }
+
+        .VideoPlayer__img {
+            height: 170px;
+
+            @media screen and (max-width: $bp-SM){
+                height: 170px;
+            }
+
+            img{
+                object-fit: cover;
+                object-position: center center;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    &__caption{
+        padding-top: 14px;
+        padding-right: 30px;
+        font-weight: lighter;
+        max-width: 270px;
+
+        .cap1{
+            font-size: 17px;
+            color: #9D8855;
+            margin-bottom: 4px;
+        }
+        
+        .cap2{
+            font-size: 17px;
+            color: #484848;
         }
     }
 }

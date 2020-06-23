@@ -8,6 +8,7 @@ import './styles.scss';
 import brandImg from '../../assets/images/brands/capa.svg'
 import bgSitio from '../../assets/images/backgrounds/home-sitio.png'
 import bgHipica from '../../assets/images/backgrounds/home-hipica.png'
+import Preloader from 'components/UI/Preloader';
 
 const Home = (props) => {
     const [isFetching,
@@ -34,53 +35,66 @@ const Home = (props) => {
         }
     }, []);
 
-    const [hasHover, setHasHover] = useState(false);
-    const [canHover, setCanHover] = useState(true);
+    const [hasHover,
+        setHasHover] = useState(false);
+    const [canHover,
+        setCanHover] = useState(true);
 
     const toggleHover = (opt) => {
-        
-        if(!opt){
+
+        if (!opt) {
             setCanHover(false)
             setHasHover(false)
             setTimeout(() => setCanHover(true), 200)
         }
-        
-        if(canHover){
-            if(opt === 'left'){
+
+        if (canHover) {
+            if (opt === 'left') {
                 setHasHover('left');
-            }else if(opt === 'right'){
+            } else if (opt === 'right') {
                 setHasHover('right');
             }
         }
     }
 
     return (
+        <>
+        <Preloader show={true}/>
         <section className="Home page-interna">
-            <div class="Home__side left" data-canHover={canHover } onMouseEnter={() => toggleHover('left')} onMouseLeave={() => toggleHover(false)}>
-                <img
-                    className="background"
-                    src={bgSitio}/>
-                <Link to="/sitio" className="Home__side-title">
-                    Sítio
-                </Link>
-            </div>
-            <div className="Home__side right" data-canHover={canHover} onMouseEnter={() => toggleHover('right')} onMouseLeave={() => toggleHover(false)}>
-            <img
-                    className="background"
-                    src={bgHipica}/>
-                <Link to="/hipica" className="Home__side-title">
-                    Equipe Hípica
-                </Link>
-            </div>
-            <div className="Home__center" data-hasHover={canHover ? hasHover : false}>
-                <div className="Home__center-top"></div>
-                <div className="Home__center-brand">
-                    <img src={brandImg} alt="Logomarca Santo Antônio"/>
-                </div>
-                <div className="Home__center-middle"></div>
-                <div className="Home__center-bottom"></div>
-            </div>
-        </section>
+                    <div
+                        class="Home__side left"
+                        data-canHover={canHover}
+                        onMouseEnter={() => toggleHover('left')}
+                        onMouseLeave={() => toggleHover(false)}>
+                        <img className="background" src={bgSitio}/>
+                        <Link to="/sitio" className="Home__side-title">
+                            Sítio
+                        </Link>
+                    </div>
+                    <div
+                        className="Home__side right"
+                        data-canHover={canHover}
+                        onMouseEnter={() => toggleHover('right')}
+                        onMouseLeave={() => toggleHover(false)}>
+                        <img className="background" src={bgHipica}/>
+                        <Link to="/hipica" className="Home__side-title">
+                            Equipe Hípica
+                        </Link>
+                    </div>
+                    <div
+                        className="Home__center"
+                        data-hasHover={canHover
+                        ? hasHover
+                        : false}>
+                        <div className="Home__center-top"></div>
+                        <div className="Home__center-brand">
+                            <img src={brandImg} alt="Logomarca Santo Antônio"/>
+                        </div>
+                        <div className="Home__center-middle"></div>
+                        <div className="Home__center-bottom"></div>
+                    </div>
+                </section>
+        </>
     )
 }
 

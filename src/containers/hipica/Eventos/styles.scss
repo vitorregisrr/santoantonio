@@ -1,10 +1,146 @@
 @import 'assets/scss/variables/__all.scss';
 
-.Eventos{
-    .PageBanner__title{
+.Eventos {
+    &__ano {
+        display: inline-block;
+        font-family: 'Lowan';
+        margin: 0 auto;
+        color: #9D8855;
+        border: 1px solid #9D8855;
+        padding: 14px 50px;
+        font-size: 30px;
+
         @media screen and (max-width: $bp-MD){
-            font-size: 57px;
-            margin-bottom: -18px;
+            font-size: 23px;
+            padding: 11px 40px;
+            margin-top: 16px;
+            margin-bottom: 0px;
         }
+    }
+
+    &__table {
+        width: 100%;
+
+        &-header {
+            display: flex;
+            padding-bottom: 14px;
+            border-bottom: 1px solid #9D8855;
+
+            &.mobile{
+                display: none;
+                
+                @media screen and (max-width: $bp-LG){
+                    display: flex;
+                    width: 100%;
+                    margin-bottom: 10px;
+                    padding: 0 8px;
+                    padding-bottom: 5px;
+                    margin-top: 10px;
+                }
+            }
+
+            @media screen and (max-width: $bp-LG){
+                padding-bottom: 8px;
+                display: none;
+            }
+
+            div {
+                color: #9D8855;
+                text-transform: uppercase;
+                font-size: 22px;
+                font-weight: lighter;
+                width: 25%;
+
+                @media screen and (max-width: $bp-MD){
+                    font-size: 17px;
+                }
+
+                &:nth-last-child(2){
+                    @media screen and (max-width: $bp-MD){
+                        min-width: 37%;
+                    }
+                }
+            }
+        }
+
+        &-datas{
+            width: 100%;
+        }
+
+        &-item {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid #D6D6D6;
+            padding: 10px 0;
+
+            &:last-child{
+                margin-bottom: 15px;
+            }
+
+            .data {
+                font-weight: 500;
+                color: #9D8855;
+                font-size: 21px;
+                min-width: 15%;
+
+                @media screen and (max-width: $bp-MD){
+                    font-size: 15px;
+                    text-align: center;
+                    margin-left: -5px;
+                    min-width: 28%;
+                    padding-right: 20px;
+                }
+            }
+
+            .evento{
+                min-width: 30.5%;
+                color: #484848;
+                font-size: 15px;
+                font-weight: 500;
+
+                @media screen and (max-width: $bp-MD){
+                    min-width: 35%;
+                }
+            }
+    
+            .local{
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                font-size: 15px;
+                color: #484848bb;
+
+                @media screen and (max-width: $bp-MD){
+                    padding-right: 15px;
+                }
+            }
+        }
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: 26px 0;
+        border-bottom: 1px solid #9d8755bb;
+
+        @media screen and (max-width: $bp-MD){
+            flex-direction: column;
+        }
+
+        &-mes {
+            min-width: 14%;
+            font-weight: 500;
+            font-size: 23px;
+            color: #9D8855;
+
+            @media screen and (max-width: $bp-MD){
+                width: 100%;
+                text-align: center;
+                margin-bottom: 15px;
+                text-transform: uppercase;
+            }
+        }
+
     }
 }

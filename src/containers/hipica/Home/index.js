@@ -128,7 +128,7 @@ const Home = (props) => {
                         <span className="title">Equipe</span>
                         <span className="desc">Os integrantes da nossa história</span>
                     </Link>
-                    <Link to="/hipica/paddock" className="Home__menu-item">
+                    <Link to="/hipica/cavalos" className="Home__menu-item">
                         <span className="title">Cavalos</span>
                         <span className="desc">Nossos melhores amigos</span>
                     </Link>
@@ -136,11 +136,11 @@ const Home = (props) => {
                         <span className="title">Resultados</span>
                         <span className="desc">Maiores <br class="d-none d-lg-block"/> conquistas</span>
                     </Link>
-                    <Link to="/hipica/events" className="Home__menu-item">
+                    <Link to="/hipica/eventos" className="Home__menu-item">
                         <span className="title">Eventos</span>
                         <span className="desc">Principais concursos do ano</span>
                     </Link>
-                    <Link to="/hipica/mídia" className="Home__menu-item">
+                    <Link to="/hipica/midia" className="Home__menu-item">
                         <span className="title">Mídia</span>
                         <span className="desc">O que estão falando da gente</span>
                     </Link>

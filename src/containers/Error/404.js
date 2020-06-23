@@ -11,7 +11,7 @@ const Error404 = (props) => {
                         style={{
                         fontWeight: 400
                     }}>Página não encontrada!</h1>
-                    <hr style={{width: '250px', borderColor: '#831313c0', backgroundColor: '#831313c0', margin: '0 auto'}} />
+                    <hr style={{width: '250px', borderColor: '#0A221D', backgroundColor: '#0A221D', margin: '0 auto'}} />
                     <h4 className="color-primary">
                         <Link
                             to="/"
@@ -20,7 +20,7 @@ const Error404 = (props) => {
                             width: '100%',
                             display: 'block',
                             fontWeight: 400,
-                            color: '#831313c0 !important'
+                            color: '#0A221D !important'
                         }}>Ir para ínicio</Link>
                     </h4>
                 </div>

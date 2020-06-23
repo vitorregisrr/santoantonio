@@ -1,0 +1,224 @@
+@import 'assets/scss/variables/__all.scss';
+
+.PhotoModal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0;
+    pointer-events: none;
+    background-color: #0A221D;
+    z-index: 999;
+    transition: all 0.4s;
+
+    &[data-visible="true"]{
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    .container{
+        overflow: visible;
+    }
+
+    &__content{
+        position: relative;
+        width: 100%;
+        margin: 0 auto;
+
+        @media screen and (max-width: $bp-LG){
+            width: 90%;
+        }
+    }
+
+    &__position {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #747474;
+        font-size: 14px;
+        z-index: 12;
+
+        .legenda{
+            margin-top: -30px;
+        }
+
+        .current {
+            font-weight: 500;
+            color: #9D8855;
+            font-size: 20px;
+        }
+    }
+
+    &__header{
+        position: absolute;
+        top: 40px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #9d8755c2;
+        padding-bottom: 0px;
+
+        @media screen and (max-width: $bp-MD){
+            width: 92%;
+            top: 14px;
+        }
+
+        .left{
+            display: flex;
+            align-items: center;
+        }
+
+        .title{
+            font-size: 22px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: lighter;
+        }
+
+        .icon{
+            margin-right: 20px;
+        }
+    }
+
+    .slick-arrow{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0);
+        background-size: contain;
+        background-position: center center;
+        background-color: #fff;
+        width: 44px;
+        height: 75px;
+        z-index: 10;
+
+        @media screen and (max-width: $bp-XL){
+            width: 64px;
+            height: 100px;
+        }
+
+        @media screen and (max-width: $bp-MD){
+            width: 31px;
+            height: 45px;
+        }
+
+        &.slick-next{
+            right: .8%;
+            background-image: url('../../../../assets/images/ico/chevron-right-1.png');
+
+            @media screen and (max-width: $bp-LG){
+                right: -16%;
+            }
+
+            @media screen and (max-width: $bp-MD){
+                right: -3%;
+            }
+        }
+        
+        &.slick-prev{
+            left: -.8%;
+            background-image: url('../../../../assets/images/ico/chevron-left-1.png');
+
+            @media screen and (max-width: $bp-LG){
+                left: -16%;
+            }
+
+            @media screen and (max-width: $bp-MD){
+                left: -5%;
+            }
+        }
+    }
+
+    .slick-track{
+        display: flex;
+    }
+
+    &__item{
+        width: 100%;
+        height: 90vh;
+        display: flex !important;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 60px;
+        pointer-events: none;
+
+
+        @media screen and (max-width: $bp-MD){
+            margin-top: 80px;
+        }
+        
+        
+        &-img{
+            width: auto;
+            max-width: 100%;
+            max-height: 67%;
+            object-fit: contain;
+            margin-top: -5px;
+
+            @media screen and (max-width: $bp-XL){
+                margin-top: 20px;
+            }
+
+            @media screen and (max-width: $bp-MD){
+                width: 70%;
+                margin-top: -50px;
+            }
+        }
+
+        &-desc{
+            max-width: 600px;
+            text-align: center;
+            font-size: 18px;
+            color: #484848;
+        }
+
+        &-line{
+            height: 1px;
+            width: 100%;
+            background-color: rgba(228, 228, 228, 0.112);
+            border-color: none;
+            opacity: .4;
+        }
+
+        &-nome{
+            color: #831313;
+            font-size: 17px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        &-autor{
+            color: #484848;
+            font-size: 12px;
+            text-align: center;
+            font-weight: 300;
+            margin-top: 0;
+        }
+    }
+
+    &__close{
+        color: $color-primary;
+        background: none;
+        border: none !important;
+        width: 40px;
+        height: 40px;
+        background-image: url(../../../../assets/images/ico/close.png);
+        background-position: center center;
+        background-size: contain;
+        z-index: 10;
+
+        @media screen and (max-width: $bp-MD){
+            top: 26px;
+            right: 26px;
+            width: 35px;
+            height: 35px;
+        }
+    }
+}

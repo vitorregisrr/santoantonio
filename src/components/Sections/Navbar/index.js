@@ -42,10 +42,16 @@ const Navbar = ({location}) => {
             label: 'História'
         }, {
             key: '/hipica/equipe',
-            label: 'Equipe'
+            label: 'Equipe',
+            isActive: (match,location) => {
+                return /equipe/.test(location.pathname) ||  /integrante/.test(location.pathname)
+            }
         }, {
             key: '/hipica/cavalos',
-            label: 'Cavalos'
+            label: 'Cavalos',
+            isActive: (match,location) => {
+                return /cavalo/.test(location.pathname)
+            }
         }, {
             label: 'Resultados',
             key: '/hipica/resultados'
@@ -62,6 +68,7 @@ const Navbar = ({location}) => {
         animateScroll.scrollToTop({duration: 200});
         setIsToggled(false);
     }
+
     return (
         <React.Fragment>
             <div
@@ -139,7 +146,8 @@ const Navbar = ({location}) => {
                                         className={`Navbar__item`}
                                         key={i.key}
                                         to={i.key}
-                                        onClick={() => setIsToggled(false)}>
+                                        isActive={i.isActive}
+                                        onClick={() => clickLink()}>
                                         {i.label}
                                     </NavLink>                                
                                 ))}

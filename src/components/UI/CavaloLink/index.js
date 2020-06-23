@@ -12,7 +12,7 @@ const CavaloLink = ({
     detalhes
 }) => {
     return (
-        <Link className="CavaloLink" to={`/hipica/integrante?id=${id}`}>
+        <Link className="CavaloLink" to={`/hipica/cavalo?id=${id}`}>
             <div className="CavaloLink__img">
                 <img src={img} alt={`Retrato do integrante ${nome}`}/>
             </div>

@@ -5,7 +5,7 @@ import VideoModal from './VideoModal'
 
 import './styles.scss'
 
-const GallerySlider = ({image, url}) => {
+const GallerySlider = ({image, url, size, cap1, cap2}) => {
     const [showGaleriaModal,
         setShowGaleriaModal] = useState(false);
 
@@ -24,16 +24,27 @@ const GallerySlider = ({image, url}) => {
 
     return (
         <React.Fragment>
-            <section className="VideoPlayer">
-                <div className="VideoPlayer__img">
-                    <div className="overlay"></div>
-                    <img src={image} alt="Foto de background do video"/>
+            <article className="VideoPlayer" data-size={size} onClick={activeModal}>
+                <div className="position-relative">
+                    <div className="VideoPlayer__img">
+                        <div className="overlay"></div>
+                        <img src={image} alt="Foto de background do video"/>
+                    </div>
+                    <button
+                        className="VideoPlayer__play"
+                        title="Abrir modal do video"
+                        onClick={activeModal}></button>
                 </div>
-                <button
-                    className="VideoPlayer__play"
-                    title="Abrir modal do video"
-                    onClick={activeModal}></button>
-            </section>
+
+                {cap1 ? <div className="VideoPlayer__caption">
+                    <div className="cap1">
+                        {cap1}
+                    </div>
+                    <div className="cap2">
+                        {cap2}
+                    </div>
+                </div> : null}
+            </article>
 
             <VideoModal closeModal={closeModal} visible={showGaleriaModal} url={url}/>
         </React.Fragment>

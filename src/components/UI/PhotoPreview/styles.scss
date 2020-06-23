@@ -1,0 +1,82 @@
+@import 'assets/scss/variables/__all.scss';
+
+.PhotoPreview {
+    position: relative;
+    width: 100%;
+
+   
+
+    &__navs {
+        display: flex;
+        align-items: center;
+    }
+
+    &__arrow {
+        transition: all 0.4s;
+
+        &.left {
+            background: none;
+            background-image: url('../../../assets/images/ico/chevron-left.png');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            border: none;
+        }
+
+        &.right {
+            background: none;
+            background-image: url('../../../assets/images/ico/chevron-right.png');
+            background-position: center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 40px;
+            height: 40px;
+            border: none;
+        }
+        &:hover {
+            transform: scale(1.09);
+            border: none;
+        }
+
+    }
+
+    &__position {
+        color: #747474;
+        font-size: 14px;
+
+        .current {
+            font-weight: 500;
+            color: #9D8855;
+            font-size: 20px;
+        }
+    }
+
+    &__footer {
+        display: flex;
+        background-color: #0A221D;
+        padding: 18px 15px;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__caption{
+        font-size: 17px;
+        max-width: 80%;
+        font-weight: lighter;
+    }
+
+    &__expand{
+        background-color: transparent;
+        border: none;
+        background-image: url(../../../assets/images/ico//expand.png);
+        background-size: contain;
+        background-position: center center;
+        background-repeat: no-repeat;
+        width: 34px;
+        height: 34px;
+    }
+}
