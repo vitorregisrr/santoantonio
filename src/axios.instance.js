@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-    baseURL: 'http://franb.sitesemproducao.com'
+    baseURL: 'http://agenciawebsorocaba.com.br/equipe_sa/api/v1/'
 });
 
 export default instance;

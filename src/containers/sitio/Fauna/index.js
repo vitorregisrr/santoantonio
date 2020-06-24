@@ -10,19 +10,21 @@ const Fauna = (props) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
-        setData] = useState(false);
+        setData] = useState({page: {dados: false}});
 
     useEffect(() => {
-        if (getStorage('hipismo-data')) {
+        const dataName = 'sitio-fauna-data';
+        if (getStorage(dataName)) {
             setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
+            setData(JSON.parse(getStorage(dataName)));
+
         } else {
             axios
-                .get('/pages/hipismo')
+                .get('/sitio/fauna')
                 .then(response => {
+                    console.log(response)
                     setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
+                    setStorage(dataName, JSON.stringify(response.data));
                 })
                 .catch(err => console.log(err))
                 . finally(() => {
@@ -36,38 +38,22 @@ const Fauna = (props) => {
             <div className="container sm">
                 <div className="markup mb-4 mb-lg-5">
                     <h2>
-                        Fauna
+                        {data.page.title}
                     </h2>
                 </div>
             </div>
             <div className="container pb-4 pb-lg-5">
                 <div className="markup">
-                    <img src={require('../../../assets/images/thumbs/s-f-1.png')} alt=""/>
+                    <img src={data.page.dados.imagem_superior} alt=""/>
                 </div>
             </div>
 
             <div className="container sm">
                 <div className="markup">
 
-                    <h3>Um santuário para os animais</h3>
+                    <h3>{data.page.dados.titulo_texto_superior}</h3>
 
-                    <p>
-                        O amor, o cuidado e o respeito pelos animais sempre foram algumas das principais
-                        características do Sítio Santo Antônio. A começar pelos cavalos, cuja criação se
-                        estende para muito além dos concursos da equipe de hipismo. Quando ficam mais
-                        velhos, depois de aposentados das competições, todos os cavalos são levados para
-                        os piquetes do sítio e continuam a receber até o fim da vida o mesmo tratamento
-                        de quando saltavam, desde os cuidados veterinários até uma alimentação
-                        equilibrada.
-                    </p>
-
-                    <p>
-                        As outras criações de animais têm o mesmo tipo de atenção, com a supervisão e o
-                        acompanhamento diário dos tratadores. A criação de gado jersey garante a
-                        produção de queijos do sítio, e a fauna doméstica em cativeiro também inclui
-                        carneiros, cabritos, galinhas, coelhos, porcos-do-mato, veados, algumas antas e
-                        até mesmo alguns animais exóticos.
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: data.page.dados.texto_superior}}></div>
                 </div>
             </div>
 
@@ -77,29 +63,29 @@ const Fauna = (props) => {
                         <div className="col-lg-6 pr-lg-0">
                             <div className="row">
                                 <div className="col-lg-12 mb-lg-3">
-                                    <img src={require('../../../assets/images/thumbs/s-f-2.png')} alt=""/>
+                                    <img src={data.page.dados.imagem_central_1} alt=""/>
                                 </div>
                                 <div className="col lg-2"></div>
                                 <div className="col-lg-10">
-                                    <img src={require('../../../assets/images/thumbs/s-f-5.png')} alt=""/>
+                                    <img src={data.page.dados.imagem_central_4} alt=""/>
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-6 pt-lg-4">
                             <div className="row">
                                 <div className="col-lg-10 mb-lg-3 mt-lg-5 pt-lg-5 position-relative">
-                                    <img src={require('../../../assets/images/thumbs/s-f-3.png')} alt=""/>
+                                    <img src={data.page.dados.imagem_central_2} alt=""/>
                                     <div className="img-legenda legenda-1">
-                                        O Sítio Santo Antônio abriga diversas criações de aves e animais
+                                        {data.page.dados.descricao_fotos}
                                     </div>
                                 </div>
                                 <div className="d-none d-lg-block col-lg-2"></div>
                                 <div className="col-lg-7 mb-lg-3">
-                                    <img src={require('../../../assets/images/thumbs/s-f-4.png')} alt=""/>
+                                    <img src={data.page.dados.imagem_central_3} alt=""/>
                                 </div>
                                 <div className="d-none d-lg-block col-lg-3"></div>
                                 <div className="col-lg-10">
-                                    <img src={require('../../../assets/images/thumbs/s-f-6.png')} alt=""/>
+                                    <img src={data.page.dados.imagem_central_5} alt=""/>
                                 </div>
                             </div>
                         </div>
@@ -109,37 +95,19 @@ const Fauna = (props) => {
 
             <div className="container sm">
                 <div className="markup">
-                    <p>
-                        As aves são um capítulo à parte. Um dos tios de Chiquinho, Moacyr de Carvalho
-                        Dias – o tio Xixo – estabeleceu em Poços de Caldas um criadouro de animais
-                        silvestres que incluía mais de 4.000 aves de cerca de trezentas espécies. Com a
-                        ajuda do tio Xixo, Chiquinho construiu no sítio um aviário que abriga centenas
-                        de espécies diferentes de aves, incluindo pavões, faisões, mutuns de vários
-                        tipos, marrecos, gansos, emas e emus.
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: data.page.dados.texto_continuacao}}></div>
                 </div>
 
                 <div className="position-relative px-lg-5 mt-5 pt-lg-3 pb-lg-3">
-                    <img src={require('../../../assets/images/thumbs/s-f-8.png')} alt=""/>
+                    <img src={data.page.dados.imagem_central_6} alt=""/>
                 </div>
 
                 <div className="markup">
-                    <p>
-                        Mas o empresário gosta mesmo é de bicho solto. Mais do que as criações em
-                        cativeiro, todo o ecossistema do sítio e o projeto ambiental de recuperação da
-                        natureza visam criar um habitat para a fauna silvestre. Com o tempo, à medida
-                        que as árvores vão crescendo e dando frutos, é cada vez maior a presença de aves
-                        e animais que vêm se alimentar no terreno do sítio e acabam ficando. São
-                        pássaros de todo tipo, incluindo joões-de-barro – um casal deles fez um ninho na
-                        chaminé da casa principal, e desde então a lareira nunca mais foi usada, para
-                        não espantá-los – e bandos de jacus que vivem no meio da mata. Coelhos
-                        silvestres, sapos e rãs, tatus, pacas, e até mesmo tamanduás já foram observado
-                        na propriedade.
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: data.page.dados.texto_continuacao_2}}></div>
                 </div>
 
                 <div className="position-relative px-lg-5 mt-5 pt-lg-3 pb-lg-3">
-                    <img src={require('../../../assets/images/thumbs/s-f-9.png')} alt=""/>
+                    <img src={data.page.dados.imagem_central_7} alt=""/>
                 </div>
             </div>
 
@@ -152,10 +120,7 @@ const Fauna = (props) => {
 
             <div className="container pt-5">
                 <GallerySlider
-                    items={[{
-                        imagem: require('../../../assets/images/thumbs/s-f-10.png')
-                    }
-                ]}/>
+                    items={data.fotos || []}/>
             </div>
             {/* <VideoPlayer /> */}
         </section>

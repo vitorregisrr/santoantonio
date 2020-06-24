@@ -29,7 +29,7 @@
 
     &__play{
         position: absolute;
-        bottom: 5px;
+        bottom: 0px;
         left: 0;
         background-color: #9D8855;
         width: 120px;
@@ -39,6 +39,7 @@
         background-position: center center;
         background-size: 50%;
         border: none;
+        border: 1.3px solid rgba(255, 255, 255, 0.541);
         z-index: 4;
 
         @media screen and (max-width: $bp-MD){

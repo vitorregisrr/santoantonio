@@ -42,8 +42,8 @@ const GallerySlider = (props) => {
                     <Element name="gallery-img">
                         <div className="GallerySlider__img">
                             <img
-                                src={sliderData[currIndex].imagem}
-                                alt={sliderData[currIndex].legenda}
+                                src={sliderData[currIndex].image}
+                                alt={sliderData[currIndex].descricao}
                                 className="GallerySlider__img"/>
                         </div>
                     </Element>

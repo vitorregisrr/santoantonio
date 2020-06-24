@@ -10,19 +10,25 @@ const Tour = (props) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
-        setData] = useState(false);
+        setData] = useState({
+        page: {
+            dados: false
+        }
+    });
 
     useEffect(() => {
-        if (getStorage('hipismo-data')) {
+        const dataName = 'sitio-flora-data';
+        if (getStorage(dataName)) {
             setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
+            setData(JSON.parse(getStorage(dataName)));
+
         } else {
             axios
-                .get('/pages/hipismo')
+                .get('/sitio/flora')
                 .then(response => {
+                    console.log(response)
                     setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
+                    setStorage(dataName, JSON.stringify(response.data));
                 })
                 .catch(err => console.log(err))
                 . finally(() => {
@@ -36,59 +42,35 @@ const Tour = (props) => {
             <div className="container sm">
                 <div className="markup mb-4 mb-lg-5">
                     <h2>
-                        Flora
+                        {data.page.title}
                     </h2>
                 </div>
             </div>
             <div className="container pb-4 pb-lg-5">
                 <div className="markup">
-                    <img src={require('../../../assets/images/thumbs/s-fl-1.png')} alt=""/>
+                    <img src={data.page.dados.imagem_superior} alt=""/>
                 </div>
             </div>
 
             <div className="container sm">
                 <div className="markup">
-                    <p>
-                        No início, o terreno era praticamente um descampado. Só havia mato: taquaruçu,
-                        arranha-gato, uma vegetação rasteira, nos moldes dos outros morros da região. A
-                        terra, devastada pelas constantes queimadas, não era muito indicada para o
-                        plantio, e as primeiras tentativas de fato não deram muito certo. Foi necessária
-                        uma intensa fertilização do solo, partindo da matéria orgânica produzida pelos
-                        cavalos, para que as plantas começassem a vingar de vez.
-                    </p>
 
-                    <p>
-                        Com o tempo, as árvores foram crescendo e aquele descampado deu lugar a uma
-                        verdadeira floresta. Na parte mais antiga do terreno, a mata já se regenera
-                        sozinha e o próprio clima se modificou, com mais umidade e uma temperatura mais
-                        amena à sombra das árvores.
-                    </p>
+                    <div
+                        dangerouslySetInnerHTML={{
+                        __html: data.page.dados.texto_superior
+                    }}></div>
 
                     <div className="position-relative px-lg-5 mt-5 pt-lg-3 pb-lg-5">
-                        <img src={require('../../../assets/images/thumbs/s-fl-2.png')} alt=""/>
+                        <img src={data.page.dados.imagem_secundaria} alt=""/>
                     </div>
 
-                    <p>
-                        Com milhares de mudas das mais variadas espécies plantadas até hoje, o sítio
-                        Santo Antônio pode ser considerado um verdadeiro parque ecológico. De um lado
-                        sempre houve uma preocupação estética no arranjo e no cuidado com as plantações,
-                        e de outro o foco principal do plantio sempre foi o de fornecer a maior
-                        quantidade possível de alimento para os bichos.
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: data.page.dados.texto_continuacao}}></div>
 
                     <div className="position-relative px-lg-5 mt-5 pt-lg-4 pb-lg-5">
-                        <img src={require('../../../assets/images/thumbs/s-fl-3.png')} alt=""/>
+                        <img src={data.page.dados.imagem_terciaria} alt=""/>
                     </div>
 
-                    <p>
-                        Tem palmeiras de vários tipos, como jerivás e rabos-de-raposa, tem ipês e
-                        eucaliptos, tem amora, abacate, manga, jaca, pitanga, nêspera, goiaba, graviola,
-                        jambo, jabuticaba, mamão, banana, uma lista sem fim de árvores frutíferas; tem
-                        muito café, tem pau-brasil, tem árvores exóticas e decorativas, como as
-                        espatódeas, e uma infinidade de orquídeas e bromélias que ajudam a embelezar o
-                        lugar. Andar pelos caminhos do sítio é uma experiência única, com sua
-                        exuberância de cores, cheiros e gostos a cada nova trilha.
-                    </p>
+                    <div dangerouslySetInnerHTML={{__html: data.page.dados.texto_continuacao_2}}></div>
 
                 </div>
             </div>
@@ -101,21 +83,27 @@ const Tour = (props) => {
                                 <div className="row pl-lg-4">
                                     <div className="col-lg-2"></div>
                                     <div className="col-lg-10 mb-lg-3">
-                                        <img src={require('../../../assets/images/thumbs/s-fl-4.png')} alt=""/>
+                                        <img src={data.page.dados.imagem_central_1} alt=""/>
                                     </div>
                                     <div className="col-lg-12">
-                                        <img src={require('../../../assets/images/thumbs/s-fl-7.png')} alt=""/>
+                                        <img src={data.page.dados.imagem_central_2} alt=""/>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4">
-                                <img src={require('../../../assets/images/thumbs/s-fl-5.png')} className="mb-lg-3" alt=""/>
-                                <img src={require('../../../assets/images/thumbs/s-fl-8.png')} alt=""/>
+                                <img
+                                    src={data.page.dados.imagem_central_3}
+                                    className="mb-lg-3"
+                                    alt=""/>
+                                <img src={data.page.dados.imagem_central_4} alt=""/>
                             </div>
                             <div className="col-lg-4 pl-lg-0 pt-lg-5">
                                 <div className="row pt-lg-5 mt-lg-5">
                                     <div className="col-lg-7 pt-lg-5 mt-lg-5">
-                                        <img src={require('../../../assets/images/thumbs/s-fl-6.png')} className="pt-lg-5 mt-lg-5" alt=""/>
+                                        <img
+                                            src={data.page.dados.imagem_central_5}
+                                            className="pt-lg-5 mt-lg-5"
+                                            alt=""/>
                                     </div>
                                 </div>
                             </div>
@@ -133,13 +121,7 @@ const Tour = (props) => {
 
             <div className="container pt-5">
                 <GallerySlider
-                    items={[
-                    {
-                        imagem: require('../../../assets/images/thumbs/s-fl-9.png')
-                    }, {
-                        imagem: require('../../../assets/images/thumbs/s-fl-8.png')
-                    }
-                ]}/>
+                    items={data.fotos || []}/>
             </div>
             {/* <VideoPlayer /> */}
         </section>
