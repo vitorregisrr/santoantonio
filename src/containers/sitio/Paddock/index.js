@@ -41,7 +41,9 @@ const Paddock = (props) => {
 
     return (
         <section className="Paddock page-interna mb-2 mb-lg-5">
-            <div className="container sm">
+            {data.page.dados ? <>
+            
+                <div className="container sm">
                 <div className="markup mb-4 mb-lg-5">
                     <h2>
                         {data.page.title}
@@ -114,7 +116,8 @@ const Paddock = (props) => {
                         Conheça a equipe hípica
                     </Link>
                 </div>
-            </div>
+            </div> </> : null}
+            
         </section>
     )
 }

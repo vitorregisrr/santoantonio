@@ -11,19 +11,21 @@ const Midia = (props) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
-        setData] = useState(false);
+        setData] = useState({page: {dados: false}});
 
     useEffect(() => {
-        if (getStorage('hipismo-data')) {
+        const dataName = 'hipica-midia-data';
+        if (getStorage(dataName)) {
             setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
+            setData(JSON.parse(getStorage(dataName)));
+
         } else {
             axios
-                .get('/pages/hipismo')
+                .get('/equipe/midia')
                 .then(response => {
+                    console.log(response)
                     setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
+                    setStorage(dataName, JSON.stringify(response.data));
                 })
                 .catch(err => console.log(err))
                 . finally(() => {
@@ -31,11 +33,13 @@ const Midia = (props) => {
                 })
         }
     }, []);
-
+    
     const changeFilter = () => {}
 
     return (
         <section className="Midia page-interna pb-5 mb-2 mb-lg-5">
+            {data.page.dados ?
+            <>
             <div className="pt-lg-3 pb-lg-1">
                 <div className="markup pb-lg-4">
                     <h2 class="mb-lg-4">Mídia</h2>
@@ -105,6 +109,7 @@ const Midia = (props) => {
                     </div>
                 </div>
             </div>
+            </> : null}
 
         </section>
     )

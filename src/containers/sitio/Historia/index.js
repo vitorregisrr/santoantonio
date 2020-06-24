@@ -37,6 +37,7 @@ const Hipismo = (props) => {
 
     return (
         <section className="Historia page-interna mb-2 mb-lg-5">
+           {data.page.dados ? <>
             <div className="container sm">
                 <div className="markup">
                     <h2>
@@ -128,6 +129,7 @@ const Hipismo = (props) => {
                     }}></div>
                 </div>
             </div>
+           </> : null}
         </section>
     )
 }

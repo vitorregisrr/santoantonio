@@ -35,7 +35,9 @@ const Fauna = (props) => {
 
     return (
         <section className="Fauna page-interna mb-2 mb-lg-5">
-            <div className="container sm">
+            {data.page.dados ?
+            <> 
+                <div className="container sm">
                 <div className="markup mb-4 mb-lg-5">
                     <h2>
                         {data.page.title}
@@ -123,6 +125,7 @@ const Fauna = (props) => {
                     items={data.fotos || []}/>
             </div>
             {/* <VideoPlayer /> */}
+            </> : null}
         </section>
     )
 }

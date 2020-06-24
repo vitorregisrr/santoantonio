@@ -37,6 +37,8 @@ const QuemSomos = (props) => {
 
     return (
         <section className="Quemsomos page-interna mb-2 mb-lg-5">
+            {data.page.dados ? 
+            <>
             <div className="container sm">
                 <div className="markup mb-4 mb-lg-5">
                     <h2>
@@ -164,6 +166,7 @@ const QuemSomos = (props) => {
                     </div>
                 </div>
             </div>
+            </> : null}
 
         </section>
     )
