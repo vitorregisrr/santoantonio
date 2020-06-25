@@ -21,7 +21,7 @@ const Home = (props) => {
     // Variavel para testar breakpoint menor que 992px
     const [isMDScreen,
         setIsMDScreen] = useState(window.innerWidth < 778);
-        const [loadingPercentage, setLoadingPercentage] = useState();
+        const [loadingPercentage, setLoadingPercentage] = useState(1);
 
         const config = useMemo(() => ({
             onDownloadProgress: progressEvent => {
@@ -78,7 +78,7 @@ const Home = (props) => {
 
     return (
         <>
-        <Preloader show={true} loadProgress={loadingPercentage}/>
+        <Preloader show={isFetching} loadProgress={loadingPercentage}/>
         {data.slides ? 
         <>
         <section className="Home" key="historia-slider">

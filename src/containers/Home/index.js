@@ -13,7 +13,7 @@ const Home = (props) => {
         setIsFetching] = useState(true);
     const [data,
         setData] = useState({page: {dados: false}});
-    const [loadingPercentage, setLoadingPercentage] = useState();
+    const [loadingPercentage, setLoadingPercentage] = useState(1);
 
         const config = useMemo(() => ({
             onDownloadProgress: progressEvent => {
@@ -67,7 +67,7 @@ const Home = (props) => {
 
     return (
         <>
-        <Preloader show={true} loadProgress={loadingPercentage}/>
+        <Preloader show={isFetching} loadProgress={loadingPercentage}/>
         {data.page.dados ? 
         <>
         <section className="Home page-interna">

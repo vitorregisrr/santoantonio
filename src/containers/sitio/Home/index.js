@@ -18,7 +18,7 @@ const Home = (props) => {
         setIsAutomatic] = useState(true);
     const [isToggled,
         setIsToggled] = useState(false);
-    const [loadingPercentage, setLoadingPercentage] = useState();
+    const [loadingPercentage, setLoadingPercentage] = useState(1);
 
         const config = useMemo(() => ({
             onDownloadProgress: progressEvent => {
@@ -75,7 +75,7 @@ const Home = (props) => {
 
     return (
         <>
-        <Preloader show={true} loadProgress={loadingPercentage}/>
+        <Preloader show={isFetching} loadProgress={loadingPercentage}/>
         {data.slides ? 
         <>
         <section className="Home-S" key="historia-slider">
