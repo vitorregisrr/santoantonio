@@ -7,7 +7,7 @@ const Preloader = ({show, loadProgress}) => {
     const [visible, setVisible] = useState(show);
     
     return (
-        <aside className="Preloader" data-show={visible}>
+        <aside className="Preloader" data-show={show}>
             <div className="Preloader__content">
                 <div className="Preloader__brand">
                     <img src={brandGIF} alt="Logo animado" width={200}/>
