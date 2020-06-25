@@ -107,10 +107,6 @@ const Resultados = (props) => {
                                     label: 'Todos',
                                     value: false
                                 },
-                                {
-                                    label: 'AAA',
-                                    value: '2'
-                                },
                                 ...listCavaleiros
                             ]}/>
                         </div>
@@ -127,10 +123,6 @@ const Resultados = (props) => {
                                     label: 'Todos',
                                     value: ''
                                 },
-                                {
-                                    label: 'AAA',
-                                    value: '3'
-                                },
                                 ...listCavalos
                             ]}/>
                         </div>
@@ -146,10 +138,6 @@ const Resultados = (props) => {
                                 {
                                     label: 'Todos',
                                     value: ''
-                                },
-                                {
-                                    label: 'AAA',
-                                    value: '2'
                                 },
                                 ...listAnos
                             ]}/>
