@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {getStorage, setStorage} from 'util/storage';
 
 import Select from 'react-select'
+import {Animated} from "react-animated-css";
 
 import './styles.scss';
 
@@ -11,18 +12,54 @@ const Resultados = (props) => {
         setIsFetching] = useState(true);
     const [data,
         setData] = useState(false);
+    const [currFilter,
+        setCurrFilter] = useState({cavaleiro: false, cavalos: false, anos: false});
+
+    let listCavaleiros = [];
+    let listCavalos = [];
+    let listAnos = [];
+
+    if (data.resultados) {
+        listCavaleiros = data
+            .resultados
+            .map(i => {
+                return ({label: i.integrante.label, value: i.integrante.id})
+            })
+            .filter(function (elem, index, self) {
+                return index === self.indexOf(elem);
+            })
+            .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)));
+
+        listCavalos = data
+            .resultados
+            .map(i => {
+                return ({label: i.cavalo.label, value: i.cavalo.id})
+            })
+           .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
+
+        listAnos = data
+            .resultados
+            .map(i => {
+                return ({
+                    label: new Date(i.date).getFullYear(),
+                    value: new Date(i.date).getFullYear()
+                })
+            })
+            .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)));
+    }
 
     useEffect(() => {
-        if (getStorage('hipismo-data')) {
+        const dataName = 'hipica-equipe-data';
+        if (getStorage(dataName)) {
             setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
+            setData(JSON.parse(getStorage(dataName)));
         } else {
             axios
-                .get('/pages/hipismo')
+                .get('/equipe/resultados')
                 .then(response => {
+                    console.log(response)
                     setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
+                    setStorage(dataName, JSON.stringify(response.data));
                 })
                 .catch(err => console.log(err))
                 . finally(() => {
@@ -30,6 +67,23 @@ const Resultados = (props) => {
                 })
         }
     }, []);
+
+    const changeFilter = (key, val) => {
+       if(!val.value){
+           setCurrFilter(old => {
+               const oldd = {...old};
+               oldd[key] = false;
+               return oldd
+           })
+       }else{
+        setCurrFilter(old => {
+            const oldd = {...old};
+            oldd[key] = val;
+            return oldd
+        })
+       }
+       console.log(currFilter)
+    }
 
     return (
         <section className="Resultados page-interna mb-2 mb-lg-5">
@@ -47,10 +101,17 @@ const Resultados = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
-                                options={[{
+                                onChange={val => changeFilter('cavaleiro', val)}
+                                options={[
+                                {
                                     label: 'Todos',
-                                    value: ''
-                                }
+                                    value: false
+                                },
+                                {
+                                    label: 'AAA',
+                                    value: '2'
+                                },
+                                ...listCavaleiros
                             ]}/>
                         </div>
                     </div>
@@ -60,14 +121,17 @@ const Resultados = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
+                                onChange={val => changeFilter('cavalos', val)}
                                 options={[
                                 {
                                     label: 'Todos',
                                     value: ''
-                                }, {
+                                },
+                                {
                                     label: 'AAA',
-                                    value: 'a'
-                                }
+                                    value: '3'
+                                },
+                                ...listCavalos
                             ]}/>
                         </div>
                     </div>
@@ -77,10 +141,17 @@ const Resultados = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
-                                options={[{
+                                onChange={val => changeFilter('anos', val)}
+                                options={[
+                                {
                                     label: 'Todos',
                                     value: ''
-                                }
+                                },
+                                {
+                                    label: 'AAA',
+                                    value: '2'
+                                },
+                                ...listAnos
                             ]}/>
                         </div>
                     </div>
@@ -89,32 +160,44 @@ const Resultados = (props) => {
 
             <div className="container">
                 <div className="Resultados__list">
-                    <article className="Resultados__item">
-                        <div className="Resultados__item-nomes">
-                            <span class="cavaleiro">
-                                Thiago Mattos
-                            </span>
-                            <span class="cavalo">
-                                Amor do Santo Antônio
-                            </span>
-                        </div>
-                        <div className="Resultados__item-resultado">
-                            2º lugar PlayOff XTC, CSN Top Riders, SHP SP
-                        </div>
-                    </article>
-                    <article className="Resultados__item">
-                        <div className="Resultados__item-nomes">
-                            <span class="cavaleiro">
-                                Thiago Mattos
-                            </span>
-                            <span class="cavalo">
-                                Amor do Santo Antônio
-                            </span>
-                        </div>
-                        <div className="Resultados__item-resultado">
-                            2º lugar PlayOff XTC, CSN Top Riders, SHP SP
-                        </div>
-                    </article>
+                    {data.resultados
+                        ? data
+                            .resultados.filter(i => {
+                                const teste = 
+                                    (currFilter.cavaleiro
+                                    ? i.integrante.id == currFilter.cavaleiro.value
+                                    : true) && 
+                                    
+                                    (currFilter.cavalos
+                                    ? i.cavalo.id == currFilter.cavalos.value
+                                    : true) && 
+                                    
+                                    (currFilter.anos
+                                    ? new Date(i.date).getFullYear() == currFilter.anos.value
+                                    : true)
+
+                                return teste;
+                            })
+                            .map((resul, i) => {
+                                    return (
+                                        <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true} key={i}>
+                                            <article className="Resultados__item">
+                                                <div className="Resultados__item-nomes">
+                                                    <span class="cavaleiro">
+                                                        {resul.integrante.label}
+                                                    </span>
+                                                    <span class="cavalo">
+                                                        {resul.cavalo.label}
+                                                    </span>
+                                                </div>
+                                                <div className="Resultados__item-resultado">
+                                                    {resul.descricao}
+                                                </div>
+                                            </article>
+                                        </Animated>
+                                    )
+                            })
+                        : null}
                 </div>
             </div>
         </section>
