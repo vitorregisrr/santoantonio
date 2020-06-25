@@ -195,7 +195,7 @@ const Midia = (props) => {
 
             <div className="container ">
                 <div className="row pt-lg-4">
-                   {data ? pageItems.map( (midia, i) => {
+                   {pageItems.length > 0 ? pageItems.map( (midia, i) => {
                        return(
                         <div className="col-lg-4">
                         <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true} key={i}>
@@ -209,7 +209,7 @@ const Midia = (props) => {
                         </Animated>
                         </div>
                        )
-                   }) : null}
+                   }) : <div className="col-12 pt-4 text-center"><h4 style={{color: '#9D8855', fontFamily: 'Lowan'}}>Não encontramos resultados para sua busca.</h4></div>}
                 </div>
 
                 <div className="row pt-4 pt-lg-5">

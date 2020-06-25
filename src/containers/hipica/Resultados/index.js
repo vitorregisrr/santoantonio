@@ -12,6 +12,8 @@ const Resultados = (props) => {
         setIsFetching] = useState(true);
     const [data,
         setData] = useState(false);
+    const [pageItems,
+        setPageItems] = useState([]);
     const [currFilter,
         setCurrFilter] = useState({cavaleiro: false, cavalos: false, anos: false});
 
@@ -35,7 +37,7 @@ const Resultados = (props) => {
             .map(i => {
                 return ({label: i.cavalo.label, value: i.cavalo.id})
             })
-           .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
+            .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
 
         listAnos = data
             .resultados
@@ -68,21 +70,46 @@ const Resultados = (props) => {
         }
     }, []);
 
+    useEffect(() => {
+        if(data.resultados){
+            const pageItems = 
+        data
+            .resultados
+            .filter(i => {
+                const teste = (currFilter.cavaleiro
+                    ? i.integrante.id == currFilter.cavaleiro.value
+                    : true) && (currFilter.cavalos
+                    ? i.cavalo.id == currFilter.cavalos.value
+                    : true) && (currFilter.anos
+                    ? new Date(i.date).getFullYear() == currFilter.anos.value
+                    : true)
+
+                return teste;
+            })
+
+        setPageItems(pageItems)
+        }
+    }, [data, currFilter])
+
     const changeFilter = (key, val) => {
-       if(!val.value){
-           setCurrFilter(old => {
-               const oldd = {...old};
-               oldd[key] = false;
-               return oldd
-           })
-       }else{
-        setCurrFilter(old => {
-            const oldd = {...old};
-            oldd[key] = val;
-            return oldd
-        })
-       }
-       console.log(currFilter)
+        if (!val.value) {
+            setCurrFilter(old => {
+                const oldd = {
+                    ...old
+                };
+                oldd[key] = false;
+                return oldd
+            })
+        } else {
+            setCurrFilter(old => {
+                const oldd = {
+                    ...old
+                };
+                oldd[key] = val;
+                return oldd
+            })
+        }
+        console.log(currFilter)
     }
 
     return (
@@ -148,44 +175,33 @@ const Resultados = (props) => {
 
             <div className="container">
                 <div className="Resultados__list">
-                    {data.resultados
-                        ? data
-                            .resultados.filter(i => {
-                                const teste = 
-                                    (currFilter.cavaleiro
-                                    ? i.integrante.id == currFilter.cavaleiro.value
-                                    : true) && 
-                                    
-                                    (currFilter.cavalos
-                                    ? i.cavalo.id == currFilter.cavalos.value
-                                    : true) && 
-                                    
-                                    (currFilter.anos
-                                    ? new Date(i.date).getFullYear() == currFilter.anos.value
-                                    : true)
-
-                                return teste;
-                            })
-                            .map((resul, i) => {
-                                    return (
-                                        <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true} key={i}>
-                                            <article className="Resultados__item">
-                                                <div className="Resultados__item-nomes">
-                                                    <span class="cavaleiro">
-                                                        {resul.integrante.label}
-                                                    </span>
-                                                    <span class="cavalo">
-                                                        {resul.cavalo.label}
-                                                    </span>
-                                                </div>
-                                                <div className="Resultados__item-resultado">
-                                                    {resul.descricao}
-                                                </div>
-                                            </article>
-                                        </Animated>
-                                    )
-                            })
-                        : null}
+                    {pageItems.length > 0
+                        ? pageItems.map((resul, i) => {
+                            return (
+                                <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true} key={i}>
+                                    <article className="Resultados__item">
+                                        <div className="Resultados__item-nomes">
+                                            <span class="cavaleiro">
+                                                {resul.integrante.label}
+                                            </span>
+                                            <span class="cavalo">
+                                                {resul.cavalo.label}
+                                            </span>
+                                        </div>
+                                        <div className="Resultados__item-resultado">
+                                            {resul.descricao}
+                                        </div>
+                                    </article>
+                                </Animated>
+                            )
+                        })
+                        : <div className="col-12 pt-4 text-center">
+                            <h4
+                                style={{
+                                color: '#9D8855',
+                                fontFamily: 'Lowan'
+                            }}>Não encontramos resultados para sua busca.</h4>
+                        </div>}
                 </div>
             </div>
         </section>
