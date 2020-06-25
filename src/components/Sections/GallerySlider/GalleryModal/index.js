@@ -50,7 +50,7 @@ const GaleriaModal = ({currentItem, items, closeModal, visible}) => {
                             ? <Slick ref={slickRef} afterChange={i => setCurrent(i)} {...slickSettings}>
                                     {items.map(i => (
                                         <article className="GaleriaModal__item">
-                                            <img className="GaleriaModal__item-img" src={i.imagem}/>
+                                            <img className="GaleriaModal__item-img" src={i.image}/>
                                             <h4 className="GaleriaModal__item-nome">{i.file_desc}</h4>
                                             <h5 className="GaleriaModal__item-autor">{i.file_artista}</h5>
                                         </article>

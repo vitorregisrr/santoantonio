@@ -28,22 +28,23 @@ const Midia = (props) => {
         let listAnos = [];
     
         if (data.posts) {
-            listCavaleiros = data
-                .posts
-                .map(i => {
-                    return ({label: i.integrantes_data.label, value: i.integrantes_data.id})
-                })
-                .filter(function (elem, index, self) {
-                    return index === self.indexOf(elem);
-                })
-                .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)));
-    
-            listCavalos = data
-                .posts
-                .map(i => {
-                    return ({label: i.cavalos_data.label, value: i.cavalos_data.id})
-                })
-               .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
+            data
+                .posts.forEach( post => {
+                    post.integrantes_data.forEach( integrante => {
+                        listCavaleiros.push({label: integrante.label, value: integrante.id})
+                    })
+                });
+
+            listCavaleiros = listCavaleiros
+            .filter((thing, index, self) => index === self.findIndex((t) => (t.value === thing.value)));
+                
+            data
+                .posts.forEach( post => {
+                    post.cavalos_data.forEach( integrante => {
+                        listCavalos.push({label: integrante.label, value: integrante.id})
+                    })
+                });
+            listCavalos = listCavalos.filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
     
             listAnos = data
                 .posts
@@ -53,7 +54,9 @@ const Midia = (props) => {
                         value: new Date(i.date_of_publication).getFullYear()
                     })
                 })
-                .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)));
+                .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
+                .sort((a,b)=>b.value-a.value)
+
         }
     
         useEffect(() => {
@@ -90,7 +93,6 @@ const Midia = (props) => {
                 return oldd
             })
            }
-           console.log(currFilter)
         }
 
         useEffect(() => {
@@ -99,15 +101,15 @@ const Midia = (props) => {
             let filtered = data.posts.filter(i => {
                 const teste = 
                     (currFilter.cavaleiro
-                    ? i.integrante.id == currFilter.cavaleiro.value
+                    ? i.integrantes_data.some( integrante => integrante.id === currFilter.cavaleiro.value )
                     : true) && 
                     
                     (currFilter.cavalos
-                    ? i.cavalo.id == currFilter.cavalos.value
-                    : true) && 
+                        ? i.cavalos_data.some( cavalo => cavalo.id === currFilter.cavalos.value )
+                        : true) && 
                     
                     (currFilter.anos
-                    ? new Date(i.date).getFullYear() == currFilter.anos.value
+                    ? new Date(i.date_of_publication).getFullYear() == currFilter.anos.value
                     : true)
 
                 return teste;
@@ -148,7 +150,7 @@ const Midia = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
-                                onChange={val => changeFilter('cavaleiros', val)}
+                                onChange={val => changeFilter('cavaleiro', val)}
                                 options={[{
                                     label: 'Todos',
                                     value: ''
@@ -183,8 +185,8 @@ const Midia = (props) => {
                                 options={[{
                                     label: 'Todos',
                                     value: '',
-                                    ...listAnos
-                                }
+                                },
+                                ...listAnos
                             ]}/>
                         </div>
                     </div>

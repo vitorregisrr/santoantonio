@@ -113,7 +113,7 @@ const Navbar = ({location}) => {
 
                             <div className="Navbar__div"></div>
 
-                            <Link className="Navbar__caption">
+                            <Link className="Navbar__caption" to={/sitio/.test(location.pathname) ? '/sitio' : '/hipica'}>
                             {/sitio/.test(location.pathname) && 'Sítio'}
                             {/hipica/.test(location.pathname) && 'Equipe Hípica'}
                             </Link>
