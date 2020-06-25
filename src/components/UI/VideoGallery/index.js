@@ -46,7 +46,7 @@ const PhotoPreview = (props) => {
                         src={require('../../../assets/images/ico/play.png')}
                         alt=""
                         className="ico"/>
-                    <h4 className="title">Video</h4>
+                    <h4 className="title">Vídeos</h4>
                 </div>
                 <div className="PhotoPreview__navs">
                     <button class="PhotoPreview__arrow left" onClick={movePrev}></button>

@@ -38,7 +38,7 @@ const Cavalo = ({match}) => {
             <>
             <div className="container">
                 <div className="Cavalo__header">
-                    <Link to="cavalos" className="Cavalo__header-back">
+                    <Link to="/hipica/cavalos" className="Cavalo__header-back">
                         Voltar
                     </Link>
 
@@ -110,10 +110,10 @@ const Cavalo = ({match}) => {
                         </header>
 
                         <div className="Cavalo__informacoes">
-                        <blockquote
+                        <div
                             dangerouslySetInnerHTML={{
                             __html: data.cavalo.informacoes
-                        }}></blockquote>
+                        }}></div>
                         </div>
                     </div>
                     <div className="col-lg-6">
@@ -201,7 +201,7 @@ const Cavalo = ({match}) => {
                                     {resul.cavalo_name}
                                     </span>
                                     <div className="resultado">
-                                        {resul.descricao}P
+                                        {resul.descricao}
                                     </div>
                                 </div>
                             ))}

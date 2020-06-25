@@ -28,9 +28,18 @@
     }
 
     &__about {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding-bottom: 3px;
+
+        @media screen and (min-width: $bp-LG){
+            min-height: 545px;
+        }
+
         .about{
             font-weight: lighter;
-            padding-top: 5px;
+            padding-top: 4px;
             color: #484848;
         }
 
@@ -65,55 +74,10 @@
             }
         }
 
-        .pais {
-            position: relative;
-            font-weight: bold;
-            font-size: 21px;
-            padding: 20px 0;
-            text-transform: uppercase;
-            padding-left: 60px;
-            color: #484848;
-            margin-bottom: 15px;
-            @media screen and (max-width: $bp-LG) {
-                font-size: 19px;
-            }
-            &:after {
-                content: '';
-                position: absolute;
-                top: 50%;
-                left: 0;
-                width: 49px;
-                height: 49px;
-                transform: translateY(-50%);
-                background-image: url('../../../assets/images/ico/genealogia.png');
-                background-size: contain;
-                background-position: center center;
-                @media screen and (max-width: $bp-LG) {
-                    width: 45px;
-                    height: 45px;
-                }
-            }
-        }
-
-        .subitem {
-            color: #484848;
-            font-size: 21px;
-            font-weight: 500;
-            margin-bottom: 10px;
-
-            span {
-                font-weight: 400;
-                margin-left: 10px;
-            }
-        }
+       
     }
 
-    &__informacoes {
-        color: #484848;
-        font-size: 18px;
-        font-weight: lighter;
-        padding-right: 30px;
-    }
+
 
     &_resultados {
         background-color: #0A221D;
@@ -199,4 +163,30 @@
         }
 
     }
+
+
+    .social{
+        display: flex;
+
+        a{
+            display: block;
+            width: 30px;
+            height: 30px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center  center;
+
+            &:first-child{
+                margin-right: 15px;
+            }
+
+            &.facebook{
+                background-image: url('../../../assets/images/ico/facebook.png')
+            }
+            &.instagram{
+                background-image: url('../../../assets/images/ico/instagram.png')
+            }
+        }
+    }
+
 }

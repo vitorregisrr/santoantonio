@@ -1,16 +1,16 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
 import {animateScroll} from 'react-scroll'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 import PhotoPreview from '../../../components/UI/PhotoPreview'
 import VideoGallery from '../../../components/UI/VideoGallery'
 import GenealogiaTable from '../../../components/UI/GenealogiaTable'
 
 import './styles.scss';
+import Spinner from 'components/UI/Spinner/Spinner';
 
-const Integrante = (props) => {
+const Integrante = ({match}) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -18,12 +18,12 @@ const Integrante = (props) => {
 
         useEffect(() => {
             animateScroll.scrollToTop({duration: 200});
-            // const slug = match.params.id;
-    
-            const slug = 1
+            const slug = match.params.id;
+
             axios
-                .get(`/cavalos/${slug}`)
+                .get(`/equipe/equipe/${slug}`)
                 .then(response => {
+                    console.log(response)
                     setData(response.data);
                 })
                 .catch(err => console.log(err))
@@ -35,7 +35,8 @@ const Integrante = (props) => {
 
     return (
         <section className="Integrante page-interna mb-2 mb-lg-5">
-            <div className="container">
+            {data.integrante ? <>
+                <div className="container">
                 <div className="Integrante__header">
                     <Link to="equipe" className="Integrante__header-back">
                         Voltar
@@ -48,44 +49,35 @@ const Integrante = (props) => {
             </div>
 
             <div className="container pt-5 mt-lg-5">
-                <div className="row">
+                <div className="row position-relative">
                     <div className="col-lg-6">
-                        <img src={require('../../../assets/images/thumbs/integrante-1.png')}/>
+                        <img src={data.integrante.image}/>
                     </div>
-                    <div className="col-lg-6">
-                        <div className="Integrante__about">
-                            <div className="nome">
-                                Thiago Mattos
+                    <div className="col-lg-6 h-100">
+                        <div className="Integrante__about h-100">
+                            <div>
+                                <div className="nome">
+                                    {data.integrante.name}
 
-                                <div class="d-flex align-items-center">
-                                    <span>33 anos | Brasil</span>
-                                    <img
-                                        src={require('../../../assets/images/ico/bandeira.png')}
-                                        alt="Bandeira de nacionalidade"
-                                        className="ico"/>
+                                    <div class="d-flex align-items-center">
+                                        <span>{data.integrante.age} anos | {data.integrante.country}</span>
+                                        <img
+                                            src={data.integrante.country_image}
+                                            alt="Bandeira de nacionalidade"
+                                            className="ico"/>
+                                    </div>
+                                </div>
+                                <div className="about">
+                                    <div
+                                        dangerouslySetInnerHTML={{
+                                        __html: data.integrante.description
+                                    }}></div>
                                 </div>
                             </div>
-
-                            <div className="about">
-                                <p>
-                                    Amor é um Sela Francês criação do Haras de La Roque. Foi comprado, na Bélgica na
-                                    Ecurie Mathy, de propriedade de François e Claudia Mathy. Ele é filho do
-                                    holandês Limbo com uma égua sela francesa filha de Richebourg. Seu pai, Limbo, é
-                                    um filho de Concorde muito conhecido por sua coloração pampa e por possuir
-                                    diversos filhos desta mesma pelagem saltando provas forte, como Catapulte
-                                    (Michel Robert) e Nepos (John Whitaker).
-                                </p>
-
-                                <p>
-                                    <b>
-                                        “Antes de vir para o Brasil, Amor obteve diversas classificações em concursos
-                                        internacionais de cavalos novos. No Brasil, se consolidou como um cavalo muito
-                                        competitivo tendo sempre bons resultados nos concursos que participa. “
-                                    </b>
-                                </p>
+                            <div className="social">
+                                {data.integrante.facebook ? <a href={data.integrante.facebook} className="facebook" target="_blank"></a> : ''}
+                                {data.integrante.instagram ? <a href={data.integrante.instagram} className="instagram" target="_blank"></a> : ''}
                             </div>
-
-                            <div className="social"></div>
                         </div>
                     </div>
                 </div>
@@ -93,16 +85,12 @@ const Integrante = (props) => {
 
             <div className="container pt-5 mt-lg-3 mb-5">
                 <div className="row mb-5">
-                    <div className="col-lg-6">
-                        <VideoGallery videos={[]}/>
+                    <div className="col-lg-6 mb-5">
+                        <VideoGallery videos={data.integrante.videos}/>
                     </div>
                     <div className="col-lg-6">
                         <PhotoPreview
-                            items={[{
-                                imagem: require('../../../assets/images/thumbs/h-h-3.png'),
-                                legenda: "Legenda foto Lorem Ipsum Dolor"
-                            }
-                        ]}/>
+                            items={data.integrante.fotos}/>
                     </div>
                 </div>
             </div>
@@ -124,45 +112,21 @@ const Integrante = (props) => {
                             <div className="ano">
                                 2019
                             </div>
-                            <div className="item">
+                            {data.integrante.resultadosFinal.map( (resul, i) => (
+                                <div className="item" key={i}>
                                 <div>
                                     <span class="cavaleiro">
-                                        Thiago Mattos
+                                        {resul.integrante_name}
                                     </span>
                                     <span class="cavalo">
-                                        Amor do Santo Antônio
+                                       {resul.cavalo_name}
                                     </span>
                                 </div>
                                 <div className="resultado">
-                                    2º lugar PlayOff XTC, CSN Top Riders, SHP SP
+                                    {resul.descricao}
                                 </div>
                             </div>
-                            <div className="item">
-                                <div>
-                                    <span class="cavaleiro">
-                                        Thiago Mattos
-                                    </span>
-                                    <span class="cavalo">
-                                        Amor do Santo Antônio
-                                    </span>
-                                </div>
-                                <div className="resultado">
-                                    2º lugar PlayOff XTC, CSN Top Riders, SHP SP
-                                </div>
-                            </div>
-                            <div className="item">
-                                <div>
-                                    <span class="cavaleiro">
-                                        Thiago Mattos
-                                    </span>
-                                    <span class="cavalo">
-                                        Amor do Santo Antônio
-                                    </span>
-                                </div>
-                                <div className="resultado">
-                                    2º lugar PlayOff XTC, CSN Top Riders, SHP SP
-                                </div>
-                            </div>
+                            ))}
                             <div className="d-flex justify-content-end">
                                 <Link to="/hipica/resultados" className="more">
                                     Ver todos os resultados
@@ -173,8 +137,9 @@ const Integrante = (props) => {
                     </div>
                 </div>
             </div>
+            </> : <Spinner fullscreen />}
         </section>
     )
 }
 
-export default Integrante;
+export default withRouter(Integrante);
