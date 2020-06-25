@@ -4,8 +4,6 @@ import './styles.scss'
 import brandGIF from '../../../assets/images/brands/capa.svg';
 
 const Preloader = ({show, loadProgress}) => {
-    const [visible, setVisible] = useState(show);
-    
     return (
         <aside className="Preloader" data-show={show}>
             <div className="Preloader__content">
