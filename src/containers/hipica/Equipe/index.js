@@ -91,7 +91,7 @@ const Equipe = (props) => {
 
             <div className="container">
                 <div className="row">
-                    {data.integrantes[currFilter] ? data.integrantes[currFilter].map( (pessoa) => (
+                    {data.integrantes ? data.integrantes[currFilter].map( (pessoa) => (
                         <div className="col-md-6 col-lg-4 fadeInUp" key={pessoa.id}>
                             <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
 

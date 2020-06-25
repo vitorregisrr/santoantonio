@@ -38,7 +38,7 @@ const Integrante = ({match}) => {
             {data.integrante ? <>
                 <div className="container">
                 <div className="Integrante__header">
-                    <Link to="equipe" className="Integrante__header-back">
+                    <Link to="/hipica/equipe" className="Integrante__header-back">
                         Voltar
                     </Link>
 
@@ -60,11 +60,11 @@ const Integrante = ({match}) => {
                                     {data.integrante.name}
 
                                     <div class="d-flex align-items-center">
-                                        <span>{data.integrante.age} anos | {data.integrante.country}</span>
-                                        <img
+                                        <span>{data.integrante.age ? `${data.country.age} anos |` : null} {data.integrante.country}</span>
+                                        {data.integrante.country_image ? <img
                                             src={data.integrante.country_image}
                                             alt="Bandeira de nacionalidade"
-                                            className="ico"/>
+                                            className="ico"/> : null}
                                     </div>
                                 </div>
                                 <div className="about">

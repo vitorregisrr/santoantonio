@@ -49,7 +49,7 @@ const Resultados = (props) => {
     }
 
     useEffect(() => {
-        const dataName = 'hipica-equipe-data';
+        const dataName = 'hipica-resultados-data';
         if (getStorage(dataName)) {
             setIsFetching(false);
             setData(JSON.parse(getStorage(dataName)));
