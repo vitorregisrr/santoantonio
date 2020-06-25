@@ -1,67 +1,55 @@
 import axios from 'axios.instance'
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useMemo} from 'react';
 import {getStorage, setStorage} from 'util/storage';
 import {Link} from 'react-router-dom';
 
 import './styles.scss';
-import bgImg from '../../../assets/images/backgrounds/home-sitio-1.png';
 import brandImage from '../../../assets/images/brands/capa.svg';
+import Preloader from 'components/UI/Preloader';
 
 const Home = (props) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
-        setData] = useState(false);
+        setData] = useState({slides: false});
     const [currIndex,
         setCurrIndex] = useState(0);
     const [isAutomatic,
         setIsAutomatic] = useState(true);
     const [isToggled,
         setIsToggled] = useState(false);
-    // Variavel para testar breakpoint menor que 992px
-    const [isMDScreen,
-        setIsMDScreen] = useState(window.innerWidth < 778);
+    const [loadingPercentage, setLoadingPercentage] = useState();
 
-    useEffect(() => {
-        if (getStorage('hipismo-data')) {
-            setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
-        } else {
-            axios
-                .get('/pages/hipismo')
-                .then(response => {
-                    setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
-                })
-                .catch(err => console.log(err))
-                . finally(() => {
-                    setIsFetching(false);
-                })
-        }
-    }, []);
-
-    const backgrounds = [bgImg, bgImg, bgImg, bgImg];
-    const backgroundsMob = [bgImg, bgImg, bgImg, bgImg];
+        const config = useMemo(() => ({
+            onDownloadProgress: progressEvent => {
+                const usualUploadSize = 6136058;
+                const total = progressEvent.srcElement.getResponseHeader('Real-Content-Length') || usualUploadSize;
+                let percentCompleted = Math.round((progressEvent.loaded * 100) / total);
+                percentCompleted = percentCompleted === 100 ? 99 : percentCompleted;
+                setLoadingPercentage(percentCompleted);
+            }
+        }), []);
+    
+        useEffect( () =>{
+          if(getStorage('home-sitio-data')){
+              setIsFetching(false);
+              console.log(JSON.parse(getStorage('home-sitio-data')))
+              return setData(JSON.parse(getStorage('home-sitio-data')))
+          }
+    
+          axios.get('sitio/slides', config)
+          .then(response => {
+              setData(response.data);
+              setStorage('home-sitio-data', JSON.stringify(response.data));
+          })
+          .catch(err => console.log(err))
+          .finally(() => {
+              setIsFetching(false);
+          })
+        } ,[config]);
 
     const updateState = (index, automatic) => {
-        switch (index) {
-            case 0:
-                setCurrIndex(0);
-                break;
-
-            case 1:
-                setCurrIndex(1);
-                break;
-
-            case 2:
-                setCurrIndex(2);
-                break
-
-            case 3:
-                setCurrIndex(3);
-                break
-        }
+        setCurrIndex(index)
 
         if (!automatic) {
             setIsAutomatic(false);
@@ -69,14 +57,16 @@ const Home = (props) => {
     }
 
     useEffect(() => {
+     if(data.slides && data.slides.length > 1){
         const interval = setInterval(() => {
             if (isAutomatic) {
-                updateState(currIndex === 2
+                updateState(currIndex === data.slides.length
                     ? 0
                     : currIndex + 1, true)
             }
         }, 5000);
         return () => clearInterval(interval);
+     }
     }, [currIndex]);
 
     const toggleMenu = () => {
@@ -84,21 +74,22 @@ const Home = (props) => {
     }
 
     return (
+        <>
+        <Preloader show={true} loadProgress={loadingPercentage}/>
+        {data.slides ? 
+        <>
         <section className="Home-S" key="historia-slider">
-
-            {[0, 1, 2, 3].map(i => (
+            {data.slides.map((i, index) => (
                 <div
                     className=
-                    { `Home-S__bg historia-slider item-${i} ${currIndex === i ? 'active' : ''}` }
+                    { `Home-S__bg historia-slider item-${index} ${currIndex === index ? 'active' : ''}` }
                     style={{
-                    backgroundImage: `url(${isMDScreen
-                        ? backgrounds[i]
-                        : backgroundsMob[i]})`
+                    backgroundImage: `url(data:image/png;base64,${i.image})`
                 }}></div>
             ))}
 
             <div className="Home-S__nav">
-                {[0, 1, 2, 3].map(i => (
+                {data.slides.map((_, i)=> (
                     <button
                         key={i}
                         className={currIndex === i
@@ -156,6 +147,9 @@ const Home = (props) => {
 
             <div className="Home-S__toggler-bg" data-expanded={isToggled}></div>
         </section>
+        </>
+        : null }
+        </>
     )
 }
 

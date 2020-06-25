@@ -1,7 +1,7 @@
 @import 'assets/scss/variables/__colors.scss';
 
 .Spinner {
-    color: #0A221D;
+    color: #9D8855;
     font-size: 20px;
     margin: 0 auto;
     width: 1em;
@@ -13,6 +13,7 @@
     text-indent: -9999em;
     animation: load4 1.3s infinite linear;
     transform: translateZ(0) translate(-50%, -50%);
+    opacity: 0;
 
     &.color-primary {
         color: $color-primary !important;

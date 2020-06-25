@@ -57,7 +57,7 @@ const AppRouter = ({location}) => {
             exact: true
 
         }, {
-            path: '/hipica/integrante',
+            path: '/hipica/integrante/:id',
             name: 'Integrante',
             Component: HipicaIntegrante,
             exact: false
@@ -69,7 +69,7 @@ const AppRouter = ({location}) => {
             exact: true
 
         }, {
-            path: '/hipica/cavalo',
+            path: '/hipica/cavalo/:id',
             name: 'Cavalo',
             Component: HipicaCavalo,
             exact: false

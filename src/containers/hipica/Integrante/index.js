@@ -16,26 +16,22 @@ const Integrante = (props) => {
     const [data,
         setData] = useState(false);
 
-    useEffect(() => {
-        animateScroll.scrollToTop({duration: 200});
-
-        if (getStorage('hipismo-data')) {
-            setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
-        } else {
+        useEffect(() => {
+            animateScroll.scrollToTop({duration: 200});
+            // const slug = match.params.id;
+    
+            const slug = 1
             axios
-                .get('/pages/hipismo')
+                .get(`/cavalos/${slug}`)
                 .then(response => {
                     setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
                 })
                 .catch(err => console.log(err))
-                . finally(() => {
+                .finally(() => {
                     setIsFetching(false);
                 })
-        }
-    }, []);
+        }, []);
+    
 
     return (
         <section className="Integrante page-interna mb-2 mb-lg-5">

@@ -3,13 +3,13 @@ import {Scrollbars} from 'react-custom-scrollbars';
 
 import './styles.scss'
 
-const GenealogiaTable = ({data}) => {
+const GenealogiaTable = ({data, tipo}) => {
 
-    const TableContent = (
+    const TableContent = () => (
         <div className="GenealogiaTable">
             <div className="GenealogiaTable__header">
                 <div className="mae">
-                    Pai
+                    {tipo === 'mae' ? 'Mãe' : 'Pai'}
                 </div>
                 <div className="avos">
                     Avós
@@ -25,55 +25,55 @@ const GenealogiaTable = ({data}) => {
             <div className="GenealogiaTable__table">
                 <div className="mae">
                     <div className="box">
-                        Limbo
+                        {data[tipo]}
                     </div>
                 </div>
                 <div className="avos">
                     <div className="box">
-                        Concorde
+                        {data.avo1}
                     </div>
                     <div className="box">
-                        Hilra
+                    {data.avo2}
                     </div>
                 </div>
                 <div className="bisavos">
                     <div className="box">
-                        Voltaire
+                    {data.bisavo1}
                     </div>
                     <div className="box">
-                        Flyer
+                    {data.bisavo2}
                     </div>
                     <div className="box">
-                        Rivaal
+                    {data.bisavo3}
                     </div>
                     <div className="box">
-                        Bira
+                    {data.bisavo4}
                     </div>
                 </div>
                 <div className="trisavos">
                     <div className="box">
-                        Furioso III
+                    {data.trisavo1}
                     </div>
                     <div className="box">
-                        Gogo Moeve
+                    {data.trisavo2}
                     </div>
                     <div className="box">
-                        Marco Polo
+                    {data.trisavo3}
                     </div>
                     <div className="box">
-                        Klase
+                    {data.trisavo4}
                     </div>
                     <div className="box">
-                        Persian
+                    {data.trisavo5}
                     </div>
                     <div className="box">
-                        Mireille
+                    {data.trisavo6}
                     </div>
                     <div className="box">
-                        Samber
+                    {data.trisavo7}
                     </div>
                     <div className="box">
-                        Vira
+                    {data.trisavo8}
                     </div>
                 </div>
             </div>
@@ -81,19 +81,21 @@ const GenealogiaTable = ({data}) => {
     )
 
     return (
-        <Scrollbars
+        <>
+            {window.innerWidth < 769  ? 
+            <Scrollbars
             renderTrackVertical={props => <div
-            {...props}
-            style={{
-            display: 'none'
-        }}
-            className="track-vertical"/>}
+                {...props}
+                style={{
+                display: 'none'
+            }}/>}
             autoHeight
             autoHeightMin={520}
             marginHeight="100"
             width="700">
             <TableContent/>
-        </Scrollbars>
+        </Scrollbars> : <TableContent/>}
+        </>
     )
 }
 

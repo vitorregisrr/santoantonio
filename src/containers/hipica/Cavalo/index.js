@@ -1,16 +1,16 @@
 import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
-import {getStorage, setStorage} from 'util/storage';
 import {animateScroll} from 'react-scroll'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 import PhotoPreview from '../../../components/UI/PhotoPreview'
 import VideoGallery from '../../../components/UI/VideoGallery'
 import GenealogiaTable from '../../../components/UI/GenealogiaTable'
 
 import './styles.scss';
+import Spinner from 'components/UI/Spinner/Spinner';
 
-const Cavalo = (props) => {
+const Cavalo = ({match}) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
@@ -18,27 +18,24 @@ const Cavalo = (props) => {
 
     useEffect(() => {
         animateScroll.scrollToTop({duration: 200});
+        const slug = match.params.id;
 
-        if (getStorage('hipismo-data')) {
-            setIsFetching(false);
-            console.log(JSON.parse(getStorage('hipismo-data')))
-            setData(JSON.parse(getStorage('hipismo-data')));
-        } else {
-            axios
-                .get('/pages/hipismo')
-                .then(response => {
-                    setData(response.data);
-                    setStorage('hipismo-data', JSON.stringify(response.data));
-                })
-                .catch(err => console.log(err))
-                . finally(() => {
-                    setIsFetching(false);
-                })
-        }
+        axios
+            .get(`equipe/cavalos/${slug}`)
+            .then(response => {
+                console.log(response)
+                setData(response.data);
+            })
+            .catch(err => console.log(err))
+            .finally(() => {
+                setIsFetching(false);
+            })
     }, []);
 
     return (
-        <section className="Cavalo page-interna mb-2 mb-lg-5">
+        <section className="Cavalo page-interna mb-2 mb-lg-5 position-relative">
+            {data ? 
+            <>
             <div className="container">
                 <div className="Cavalo__header">
                     <Link to="cavalos" className="Cavalo__header-back">
@@ -59,40 +56,40 @@ const Cavalo = (props) => {
                     <div className="col-lg-6">
                         <ul className="Cavalo__about">
                             <li className="nome">
-                                Amor do Santo Antônio
+                               {data.cavalo.name}
                             </li>
 
                             <li className="pais">
-                                Limbo x Richebourg
+                                {data.cavalo.bio}
                             </li>
 
                             <li className="subitem">
                                 Data de nascimento:
-                                <span>04/03/2009</span>
+                                <span>  {data.cavalo.date_nasc}</span>
                             </li>
 
                             <li className="subitem">
                                 Gênero:
-                                <span>Masculino</span>
+                                <span>{data.cavalo.genero}</span>
                             </li>
 
                             <li className="subitem">
                                 Pelagem:
-                                <span>Pampa</span>
+                                <span>{data.cavalo.pelagem}</span>
                             </li>
 
                             <li className="subitem">
                                 Raça:
-                                <span>Sela Francês</span>
+                                <span>{data.cavalo.raça}</span>
                             </li>
 
                             <li className="subitem">
                                 Altura:
-                                <span>1,67m</span>
+                                <span>{data.cavalo.altura}</span>
                             </li>
                             <li className="subitem">
                                 Status:
-                                <span>Castrado</span>
+                                <span>{data.cavalo.status}</span>
                             </li>
                         </ul>
                     </div>
@@ -113,29 +110,15 @@ const Cavalo = (props) => {
                         </header>
 
                         <div className="Cavalo__informacoes">
-                            <p>
-                                Amor é um Sela Francês criação do Haras de La Roque. Foi comprado, na Bélgica na
-                                Ecurie Mathy, de propriedade de François e Claudia Mathy. Ele é filho do
-                                holandês Limbo com uma égua sela francesa filha de Richebourg. Seu pai, Limbo, é
-                                um filho de Concorde muito conhecido por sua coloração pampa e por possuir
-                                diversos filhos desta mesma pelagem saltando provas forte, como Catapulte
-                                (Michel Robert) e Nepos (John Whitaker).
-                            </p>
-
-                            <p>
-                                Antes de vir para o Brasil, Amor obteve diversas classificações em concursos
-                                internacionais de cavalos novos. No Brasil, se consolidou como um cavalo muito
-                                competitivo tendo sempre bons resultados nos concursos que participa.
-                            </p>
+                        <blockquote
+                            dangerouslySetInnerHTML={{
+                            __html: data.cavalo.informacoes
+                        }}></blockquote>
                         </div>
                     </div>
                     <div className="col-lg-6">
                         <PhotoPreview
-                            items={[{
-                                imagem: require('../../../assets/images/thumbs/h-h-3.png'),
-                                legenda: "Legenda foto Lorem Ipsum Dolor"
-                            }
-                        ]}/>
+                            items={data.cavalo.fotos ? data.cavalo.fotos : []}/>
                     </div>
                 </div>
 
@@ -152,11 +135,43 @@ const Cavalo = (props) => {
                         </header>
 
                         <div>
-                            <GenealogiaTable />
+                            <GenealogiaTable tipo="pai" data={{
+                                pai: data.cavalo.pai,
+                                avo1: data.cavalo.avo1,
+                                avo2: data.cavalo.avo2,
+                                bisavo1: data.cavalo.bis1,
+                                bisavo2: data.cavalo.bis2,
+                                bisavo3: data.cavalo.bis3,
+                                bisavo4: data.cavalo.bis4,
+                                trisavo1: data.cavalo.tris1,
+                                trisavo2: data.cavalo.tris2,
+                                trisavo3: data.cavalo.tris3,
+                                trisavo4: data.cavalo.tris4,
+                                trisavo5: data.cavalo.tris5,
+                                trisavo6: data.cavalo.tris6,
+                                trisavo7: data.cavalo.tris7,
+                                trisavo8: data.cavalo.tris8,
+                            }}/>
                         </div>
 
                         <div className="mt-5 mb-5">
-                            <GenealogiaTable />
+                            <GenealogiaTable tipo="mae" data={{
+                                mae: data.cavalo.mae,
+                                avo1: data.cavalo.avo3,
+                                avo2: data.cavalo.avo4,
+                                bisavo1: data.cavalo.bis5,
+                                bisavo2: data.cavalo.bis6,
+                                bisavo3: data.cavalo.bis7,
+                                bisavo4: data.cavalo.bis8,
+                                trisavo1: data.cavalo.tris9,
+                                trisavo2: data.cavalo.tris10,
+                                trisavo3: data.cavalo.tris11,
+                                trisavo4: data.cavalo.tris12,
+                                trisavo5: data.cavalo.tris13,
+                                trisavo6: data.cavalo.tris14,
+                                trisavo7: data.cavalo.tris15,
+                                trisavo8: data.cavalo.tris16,
+                            }}/>
                         </div>
                     </div>
                 </div>
@@ -177,39 +192,19 @@ const Cavalo = (props) => {
                             <div className="ano">
                                 2019
                             </div>
-                            <div className="item">
-                                <span class="cavaleiro">
-                                    Thiago Mattos
-                                </span>
-                                <span class="cavalo">
-                                    Amor do Santo Antônio
-                                </span>
-                                <div className="resultado">
-                                    2º lugar PlayOff XTC, CSN Top Riders, SHP SP
+                            {data.cavalo.resultadosFinal.map( (resul, i) => (
+                                <div className="item" key={i}>
+                                    <span class="cavaleiro">
+                                        {resul.integrante_name}
+                                    </span>
+                                    <span class="cavalo">
+                                    {resul.cavalo_name}
+                                    </span>
+                                    <div className="resultado">
+                                        {resul.descricao}P
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="item">
-                                <span class="cavaleiro">
-                                    Thiago Mattos
-                                </span>
-                                <span class="cavalo">
-                                    Amor do Santo Antônio
-                                </span>
-                                <div className="resultado">
-                                    2º lugar PlayOff XTC, CSN Top Riders, SHP SP
-                                </div>
-                            </div>
-                            <div className="item">
-                                <span class="cavaleiro">
-                                    Thiago Mattos
-                                </span>
-                                <span class="cavalo">
-                                    Amor do Santo Antônio
-                                </span>
-                                <div className="resultado">
-                                    2º lugar PlayOff XTC, CSN Top Riders, SHP SP
-                                </div>
-                            </div>
+                            ))}
                             <div className="d-flex justify-content-end">
                                 <Link to="/hipica/resultados" className="more">
                                     Ver todos os resultados
@@ -218,12 +213,18 @@ const Cavalo = (props) => {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <VideoGallery videos={[]}/>
+                        <VideoGallery videos={data.cavalo.videos}/>
                     </div>
                 </div>
             </div>
+            </>
+            : (
+                
+                <Spinner fullscreen/>
+            
+            )}
         </section>
     )
 }
 
-export default Cavalo;
+export default withRouter(Cavalo);

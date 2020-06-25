@@ -24,14 +24,14 @@ const PhotoPreview = (props) => {
     }
 
     const movePrev = () => {
-        setCurrIndex(old => old >= 1
-            ? old - 1
-            : sliderData.length - 1);
-        scroll.scrollTo('gallery-img', {offset: -140});
+        if (currIndex != 0) {
+            setCurrIndex(old => old > 1
+                ? old - 1
+                : sliderData.length - 1);
+        }
     }
 
     const moveNext = () => {
-        scroll.scrollTo('gallery-img', {offset: -140, smooth: true});
         setCurrIndex(old => old < sliderData.length - 1
             ? old + 1
             : 0)
@@ -39,7 +39,6 @@ const PhotoPreview = (props) => {
 
     return (
         <React.Fragment>
-            { sliderData[currIndex] ? <> 
             
             <header className="interna-subheader">
                 <div className="caption">
@@ -52,18 +51,21 @@ const PhotoPreview = (props) => {
                 <div className="PhotoPreview__navs">
                     <button class="PhotoPreview__arrow left" onClick={movePrev}></button>
                     <div className="PhotoPreview__position">
-                        <span className="current">{currIndex + 1}</span>
+                    <span className="current">{currIndex + 1}</span>
                         /
-                        <span className="total">{sliderData.length > 0 ? Math.ceil(sliderData.length / 4): 1}</span>
+                        <span className="total">{sliderData.length > 0
+                                ? Math.ceil(sliderData.length / 4)
+                                : 1}</span>
                     </div>
                     <button class="PhotoPreview__arrow right" onClick={moveNext}></button>
                 </div>
             </header>
 
             <section className="PhotoPreview" data-brush={props.brush}>
+            { sliderData[currIndex] ? <> 
                 <div className="PhotoPreview__img">
                     <img
-                        src={sliderData[currIndex].imagem}
+                        src={sliderData[currIndex].image}
                         alt={sliderData[currIndex].legenda}
                         className="PhotoPreview__img"/>
                 </div>
@@ -75,6 +77,7 @@ const PhotoPreview = (props) => {
                         className="PhotoPreview__expand"
                         onClick={() => activeGaleria(currIndex)}></button>
                 </footer>
+                </> : ''}
             </section>
 
             <PhotoModal
@@ -83,7 +86,6 @@ const PhotoPreview = (props) => {
                 { () => setShowModal(false) }
                 visible={showModal}
                 items={sliderData}/>
-        </> : ''}
         </React.Fragment>
     )
 }

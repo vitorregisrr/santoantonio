@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {scroller as scroll, Element} from 'react-scroll'
+import {Animated} from "react-animated-css";
 
 import VideoPlayer from '../../Sections/VideoPlayer'
 
@@ -62,38 +63,26 @@ const PhotoPreview = (props) => {
 
             <section className="PhotoPreview">
                 <div className="row">
-                    <div className="col-lg-6 mb-4">
-                        <VideoPlayer
-                            size="sm"
-                            image={require('../../../assets/images/thumbs/h-h-3.png')}
-                            url="https://www.youtube.com/watch?v=7Lm2skxgM6E"
-                            cap1="18 outubroo de 2019"
-                            cap2="Texto video loren ipsum dolor loren ipsum dolor ipsum dolor"/>
-                    </div>
-                    <div className="col-lg-6 mb-4">
-                        <VideoPlayer
-                            size="sm"
-                            image={require('../../../assets/images/thumbs/h-h-3.png')}
-                            url="https://www.youtube.com/watch?v=7Lm2skxgM6E"
-                            cap1="18 outubroo de 2019"
-                            cap2="Texto video loren ipsum dolor loren ipsum dolor ipsum dolor"/>
-                    </div>
-                    <div className="col-lg-6 mb-4">
-                        <VideoPlayer
-                            size="sm"
-                            image={require('../../../assets/images/thumbs/h-h-3.png')}
-                            url="https://www.youtube.com/watch?v=7Lm2skxgM6E"
-                            cap1="18 outubroo de 2019"
-                            cap2="Texto video loren ipsum dolor loren ipsum dolor ipsum dolor"/>
-                    </div>
-                    <div className="col-lg-6 mb-4">
-                        <VideoPlayer
-                            size="sm"
-                            image={require('../../../assets/images/thumbs/h-h-3.png')}
-                            url="https://www.youtube.com/watch?v=7Lm2skxgM6E"
-                            cap1="18 outubroo de 2019"
-                            cap2="Texto video loren ipsum dolor loren ipsum dolor ipsum dolor"/>
-                    </div>
+                    {props.videos ? 
+                    
+                        props
+                        .videos
+                        .map((video, i) => {
+                            if(i < currIndex + 1 * 4){
+                                return(
+                                    <div className="col-lg-6 mb-4" key={i}>
+                                        <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
+                                            <VideoPlayer
+                                                size="sm"
+                                                image={video.thumb}
+                                                url={video.link}
+                                                cap1={video.data}
+                                                cap2={video.descricao}/>
+                                        </Animated>
+                                    </div>
+                                )
+                            }
+                        }) : null}
                 </div>
             </section>
         </React.Fragment>

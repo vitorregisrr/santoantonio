@@ -14,7 +14,7 @@
         margin-bottom: 20px;
         transition: all 0.5s;
 
-        @media screen and (max-width: $bp-LG){
+        @media screen and (max-width: $bp-SM){
             width: 70%;
             margin: 0 auto 12px auto;
         }

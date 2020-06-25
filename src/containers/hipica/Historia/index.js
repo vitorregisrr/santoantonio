@@ -48,7 +48,7 @@ const Historia = (props) => {
             </div>
             <div className="container pb-4 pb-lg-5 px-lg-5">
                 <div className="markup px-lg-5">
-                    <img src={data.page.dados.imagem_mosaico_1} alt=""/>
+                    <img src={data.page.dados.imagem_superior} alt=""/>
                 </div>
             </div>
             <div className="container sm pt-lg-5">

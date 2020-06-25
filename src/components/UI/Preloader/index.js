@@ -45,8 +45,8 @@ const Preloader = ({show, loadProgress}) => {
                 </div>
 
                 <div className="Preloader__bar">
-                    <div className="number" style={{width: `${customProg - 1}%`}}> {customProg}%</div>
-                    <LoadBar percent={customProg}/>
+                    <div className="number" style={{width: `${loadProgress - 1}%`}}> {loadProgress}%</div>
+                    <LoadBar percent={loadProgress}/>
                 </div>
             </div>
         </aside>
