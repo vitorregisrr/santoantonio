@@ -54,34 +54,34 @@ const Equipe = (props) => {
                 </div>
             </div>
 
-            <div className="container justify-content-center md pb-5">
+            <div className="container justify-content-center pb-5">
                 <div className="row">
-                    <div className="col-lg-4 px-lg-4 d-flex justify-content-lg-end">
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-end">
                         <button onClick={() => changeFilter('Cavaleiros')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Cavaleiros' ? 'active' : ''}`}>
                             Cavaleiros
                         </button>
                     </div>
-                    <div className="col-lg-4 px-lg-4 d-flex">
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-center">
                         <button onClick={() => changeFilter('Veterinários')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Veterinários' ? 'active' : ''}`}>
                             Veterinários
                         </button>
                     </div>
-                    <div className="col-lg-4 px-lg-4 d-flex">
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-start">
                         <button onClick={() => changeFilter('Tratadores Hípica')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Tratadores Hípica' ? 'active' : ''}`}>
                             Tratadores Hípica
                         </button>
                     </div>
-                    <div className="col-lg-4 px-lg-4 d-flex">
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-end">
                         <button onClick={() => changeFilter('Tratadores Paddock')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Tratadores Paddock' ? 'active' : ''}`}>
                             Tratadores Paddock
                         </button>
                     </div>
-                    <div className="col-lg-4 px-lg-4 d-flex">
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-center">
                         <button onClick={() => changeFilter('Motorista caminhão')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Motorista caminhão' ? 'active' : ''}`}>
                             Motorista caminhão
                         </button>
                     </div>
-                    <div className="col-lg-4 px-lg-4 d-flex">
+                    <div className="col-lg-4 d-flex justify-content-center justify-content-lg-start">
                         <button onClick={() => changeFilter('Ferradores')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Ferradores' ? 'active' : ''}`}>
                             Ferradores
                         </button>
