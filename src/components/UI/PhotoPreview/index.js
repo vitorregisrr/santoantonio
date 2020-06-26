@@ -54,7 +54,7 @@ const PhotoPreview = (props) => {
                     <span className="current">{currIndex + 1}</span>
                         /
                         <span className="total">{sliderData.length > 0
-                                ? Math.ceil(sliderData.length / 4)
+                                ? Math.ceil(sliderData.length)
                                 : 1}</span>
                     </div>
                     <button class="PhotoPreview__arrow right" onClick={moveNext}></button>
@@ -66,12 +66,12 @@ const PhotoPreview = (props) => {
                 <div className="PhotoPreview__img">
                     <img
                         src={sliderData[currIndex].image}
-                        alt={sliderData[currIndex].legenda}
+                        alt={sliderData[currIndex].descricao}
                         className="PhotoPreview__img"/>
                 </div>
                 <footer className="PhotoPreview__footer">
                     <span className="PhotoPreview__caption">
-                        {sliderData[currIndex].legenda}
+                        {sliderData[currIndex].descricao}
                     </span>
                     <button
                         className="PhotoPreview__expand"

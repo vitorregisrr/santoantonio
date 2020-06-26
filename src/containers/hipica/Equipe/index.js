@@ -56,7 +56,7 @@ const Equipe = (props) => {
 
             <div className="container justify-content-center md pb-5">
                 <div className="row">
-                    <div className="col-lg-4 px-lg-4 d-flex">
+                    <div className="col-lg-4 px-lg-4 d-flex justify-content-lg-end">
                         <button onClick={() => changeFilter('Cavaleiros')} className={`btn btn-default w-m mb-3 mb-lg-4 ${currFilter === 'Cavaleiros' ? 'active' : ''}`}>
                             Cavaleiros
                         </button>
@@ -101,7 +101,7 @@ const Equipe = (props) => {
                                 ocupacao={pessoa.function}
                                 img={pessoa.image}
                                 />
-                                </Animated>
+                            </Animated>
                         </div>
                     )
                     ) : null}

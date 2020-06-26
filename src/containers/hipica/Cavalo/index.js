@@ -192,19 +192,23 @@ const Cavalo = ({match}) => {
                             <div className="ano">
                                 2019
                             </div>
-                            {data.cavalo.resultadosFinal.map( (resul, i) => (
-                                <div className="item" key={i}>
-                                    <span class="cavaleiro">
-                                        {resul.integrante_name}
-                                    </span>
-                                    <span class="cavalo">
-                                    {resul.cavalo_name}
-                                    </span>
-                                    <div className="resultado">
-                                        {resul.descricao}
-                                    </div>
-                                </div>
-                            ))}
+                            {data.cavalo.resultadosFinal.map( (resul, i) => {
+                                if(i < 3){
+                                    return(
+                                        <div className="item" key={i}>
+                                            <span class="cavaleiro">
+                                                {resul.integrante_name}
+                                            </span>
+                                            <span class="cavalo">
+                                            {resul.cavalo_name}
+                                            </span>
+                                            <div className="resultado">
+                                                {resul.descricao}
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                            })}
                             <div className="d-flex justify-content-end">
                                 <Link to="/hipica/resultados" className="more">
                                     Ver todos os resultados

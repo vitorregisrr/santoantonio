@@ -64,7 +64,7 @@ const QuemSomos = (props) => {
             </div>
 
             <div className="bg-bege overlay-1">
-                <div className="container">
+                <div className="container lg">
                     <div className="galeria-1 galeria">
                         <div className="row">
                             <div className="col-12 col-sm-6 col-lg-2 d-none d-lg-block"></div>
@@ -96,7 +96,7 @@ const QuemSomos = (props) => {
                             __html: data.page.dados.texto_continuacao
                         }}></div>
 
-                        <blockquote
+                        <blockquote className="md"
                             dangerouslySetInnerHTML={{
                             __html: data.page.dados.texto_continuacao_2_destaque
                         }}></blockquote>

@@ -74,7 +74,7 @@ const Historia = (props) => {
             <div className="container sm">
                 <div className="markup pt-lg-1">
                     <h4>{data.page.dados.titulo_historia_hipismo}</h4>
-                    <div>
+                    <div className="pb-4 pb-lg-5">
                         <img src={data.page.dados.imagem_historia_hipismo} alt=""/>
                     </div>
                     <div
@@ -106,7 +106,7 @@ const Historia = (props) => {
             </div>
 
             <div className="container sm">
-                <div className="markup">
+                <div className="markup pt-3 pt-lg-4">
                     <h4>{data.page.dados.titulo_texto_tropa}</h4>
                     <div
                         dangerouslySetInnerHTML={{
@@ -261,7 +261,7 @@ const Historia = (props) => {
                         __html: data.page.dados.texto_fundo_bege3
                     }}></blockquote>
                     <sm className="author">
-                       {data.page.dados.texto_citacao_bege3}
+                       {data.page.dados.titulo_citacao_bege3}
                     </sm>
                 </div>
             </div>
@@ -307,12 +307,12 @@ const Historia = (props) => {
             <div className="container sm pt-4 pt-lg-5">
                 <div className="markup">
                     <h4>
-                        {data.page.dados.titulo_nova_empreitada}
+                        {data.page.dados.titulo_texto_nova_empreitada}
                     </h4>
-                    <blockquote
+                    <div
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_nova_empreitada
-                    }}></blockquote>
+                    }}></div>
                     <div className="pt-4 pt-lg-5 mt-lg-3">
                         <img src={data.page.dados['img-hipismo-13']}alt=""/>
                     </div>

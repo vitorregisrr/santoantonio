@@ -48,8 +48,8 @@ const PhotoModal = ({currentItem, items, closeModal, visible}) => {
                             ? <Slick ref={slickRef} afterChange={i => setCurrent(i)} {...slickSettings}>
                                     {items.map(i => (
                                         <article className="PhotoModal__item">
-                                            <img className="PhotoModal__item-img" src={i.imagem}/>
-                                            <h4 className="PhotoModal__item-nome">{i.file_desc}</h4>
+                                            <img className="PhotoModal__item-img" src={i.image}/>
+                                            <h4 className="PhotoModal__item-nome">{i.file_descricao}</h4>
                                             <h5 className="PhotoModal__item-autor">{i.file_artista}</h5>
                                         </article>
                                     ))}
