@@ -1,3 +1,5 @@
+@import 'assets/scss/variables/__all.scss';
+
 .Preloader{
     position: absolute;
     width: 100vw;
@@ -60,6 +62,10 @@
             color: #9D8855;
             transition: all 0.3s;
             padding-left: 30px;
+
+            @media screen and (max-width: $bp-SM){
+                padding-left: 40px;
+            }
         }
 
         &:after{
