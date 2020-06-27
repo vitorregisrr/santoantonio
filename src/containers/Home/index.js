@@ -14,6 +14,7 @@ const Home = (props) => {
     const [data,
         setData] = useState({page: {dados: false}});
     const [loadingPercentage, setLoadingPercentage] = useState(1);
+    let timeout = false;
 
         const config = useMemo(() => ({
             onDownloadProgress: progressEvent => {
@@ -73,7 +74,9 @@ const Home = (props) => {
         <section className="Home page-interna">
                 <div
                     class="Home__side left"
-                    data-canHover={canHover}
+                    data-hasHover={canHover
+                    ? hasHover === 'left'
+                    : false}
                     onMouseEnter={() => toggleHover('left')}
                     onMouseLeave={() => toggleHover(false)}>
                     <img className="background" src={`data:image/png;base64,${data.page.dados.banner_home_sitio}`}/>
@@ -83,7 +86,9 @@ const Home = (props) => {
                 </div>
                 <div
                     className="Home__side right"
-                    data-canHover={canHover}
+                    data-hasHover={canHover
+                    ? hasHover === 'right'
+                    : false}
                     onMouseEnter={() => toggleHover('right')}
                     onMouseLeave={() => toggleHover(false)}>
                     <img className="background" src={`data:image/png;base64,${data.page.dados.banner_home_equipe}`}/>
