@@ -107,7 +107,9 @@
                 height: 210px;
                 @media screen and (max-width: 800px) {
                     height: 130px;
-                }
+                    padding: 0 3px;
+                } 
+
                 &:after {
                     content: '';
                     position: absolute;

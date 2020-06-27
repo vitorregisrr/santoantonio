@@ -39,9 +39,11 @@
         color: #747474;
         font-size: 14px;
         z-index: 12;
+        
 
         .legenda{
             margin-top: -30px;
+            text-align: center;
         }
 
         .current {
@@ -110,26 +112,36 @@
         &.slick-next{
             right: .8%;
             background-image: url('../../../../assets/images/ico/chevron-right-1.png');
+            background-color: transparent !important;
+            background-repeat: no-repeat;
 
             @media screen and (max-width: $bp-LG){
                 right: -16%;
             }
 
             @media screen and (max-width: $bp-MD){
-                right: -3%;
+                top: unset;
+                right: 30%;
+                transform: unset;
+                bottom: 150px !important;
             }
         }
         
         &.slick-prev{
             left: -.8%;
             background-image: url('../../../../assets/images/ico/chevron-left-1.png');
+            background-color: transparent !important;
+            background-repeat: no-repeat;
 
             @media screen and (max-width: $bp-LG){
                 left: -16%;
             }
 
             @media screen and (max-width: $bp-MD){
-                left: -5%;
+                top: unset;
+                left: 30%;
+                transform: unset;
+                bottom: 150px !important;
             }
         }
     }
@@ -166,8 +178,9 @@
             }
 
             @media screen and (max-width: $bp-MD){
-                width: 70%;
-                margin-top: -50px;
+                max-width: 105%;
+                margin-top: -140px;
+                max-height: 50%;
             }
         }
 

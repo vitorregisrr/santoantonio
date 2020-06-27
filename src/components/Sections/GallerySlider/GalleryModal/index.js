@@ -6,7 +6,8 @@ import {Portal} from 'react-portal';
 import './styles.scss'
 
 const GaleriaModal = ({currentItem, items, closeModal, visible}) => {
-    const [current, setCurrent] = useState(currentItem)
+    const [current,
+        setCurrent] = useState(currentItem)
     const slickSettings = {
         dots: false,
         nav: true,
@@ -58,13 +59,12 @@ const GaleriaModal = ({currentItem, items, closeModal, visible}) => {
                                 </Slick>
                             : null}
 
+                        <div className="GaleriaModal__position">
+                            <span className="current">{current + 1}</span>
+                            /
+                            <span className="total">{items.length}</span>
+                        </div>
                     </div>
-                </div>
-
-                <div className="GaleriaModal__position">
-                    <span className="current">{current + 1}</span>
-                    /
-                    <span className="total">{items.length}</span>
                 </div>
             </aside>
         </Portal>
