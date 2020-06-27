@@ -107,6 +107,10 @@
             right: .8%;
             background-image: url('../../../../assets/images/ico/chevron-right-1.png');
 
+            @media screen and (max-width: $bp-XL){
+                right: -.3%;
+            }
+
             @media screen and (max-width: $bp-LG){
                 right: -16%;
             }
@@ -144,7 +148,6 @@
         margin-top: 100px;
         pointer-events: none;
 
-
         @media screen and (max-width: $bp-MD){
             margin-top: 80px;
         }
@@ -152,10 +155,14 @@
         
         &-img{
             width: auto;
-            max-width: 100%;
+            max-width: 80%;
             max-height: 67%;
             object-fit: contain;
             margin-top: -5px;
+
+            @media screen and (max-width: $bp-LG){
+                max-width: 90%;
+            }
 
             @media screen and (max-width: $bp-XL){
                 margin-top: 20px;

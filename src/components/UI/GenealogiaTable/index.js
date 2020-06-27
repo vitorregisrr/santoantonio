@@ -92,7 +92,7 @@ const GenealogiaTable = ({data, tipo}) => {
             autoHeight
             autoHeightMin={520}
             marginHeight="100"
-            width="700">
+            width="750">
             <TableContent/>
         </Scrollbars> : <TableContent/>}
         </>

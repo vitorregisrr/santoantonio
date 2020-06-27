@@ -148,6 +148,7 @@ const Midia = (props) => {
                         <div className="filter-group">
                             <label htmlFor="">Cavaleiro</label>
                             <Select
+                                noOptionsMessage={() => 'Sem resultados'}
                                 className="custom-select"
                                 placeholder={'Todos'}
                                 onChange={val => changeFilter('cavaleiro', val)}
@@ -164,6 +165,7 @@ const Midia = (props) => {
                             <label htmlFor="">Cavalos</label>
                             <Select
                                 className="custom-select"
+                                noOptionsMessage={() => 'Sem resultados'}
                                 placeholder={'Todos'}
                                 onChange={val => changeFilter('cavalos', val)}
                                 options={[
@@ -181,6 +183,7 @@ const Midia = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
+                                noOptionsMessage={() => 'Sem resultados'}
                                 onChange={val => changeFilter('anos', val)}
                                 options={[{
                                     label: 'Todos',

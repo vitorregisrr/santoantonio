@@ -73,7 +73,7 @@ const Flora = (props) => {
                             dangerouslySetInnerHTML={{
                             __html: data.page.dados.texto_fundo_bege
                         }}></div>
-                        <div className="position-relative px-lg-5 mx-lg-5 pt-4">
+                        <div className="position-relative px-lg-5 mx-lg-5 pt-4 mt-1">
                             <img src={data.page.dados.imagem_fundo_bege} alt=""/>
                         </div>
                     </div>
@@ -109,7 +109,7 @@ const Flora = (props) => {
                             dangerouslySetInnerHTML={{
                             __html: data.page.dados.texto_continuacao_3
                         }}></div>
-                        <div className="position-relative px-lg-5 mx-lg-5">
+                        <div className="position-relative px-lg-5 mx-lg-5 pt-4">
                             <img src={data.page.dados.imagem_texto_continuacao_3} alt=""/>
                         </div>
                     </div>
@@ -125,7 +125,7 @@ const Flora = (props) => {
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_continuacao_4
                     }}></div>
-                    <div className="position-relative px-lg-5 mx-lg-5">
+                    <div className="position-relative px-lg-5 mx-lg-5 pt-4">
                         <img src={data.page.dados.imagem_texto_continuacao_4} alt=""/>
                     </div>
                 </div>
@@ -145,7 +145,7 @@ const Flora = (props) => {
                             dangerouslySetInnerHTML={{
                             __html: data.page.dados.texto_continuacao_5
                         }}></div>
-                        <div className="position-relative px-lg-5 mx-lg-5">
+                        <div className="position-relative px-lg-5 mx-lg-5 pt-4">
                             <img src={data.page.dados.imagem_texto_continuacao_5} alt=""/>
                         </div>
                     </div>
@@ -161,7 +161,7 @@ const Flora = (props) => {
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_continuacao_6
                     }}></div>
-                    <div className="position-relative px-lg-5 mx-lg-5">
+                    <div className="position-relative px-lg-5 mx-lg-5 pt-4">
                         <img src={data.page.dados.imagem_texto_continuacao_6} alt=""/>
                     </div>
                 </div>

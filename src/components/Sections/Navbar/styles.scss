@@ -94,8 +94,8 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         }
 
         &-home {
-            padding-left: 0;
-            margin-left: -8px;
+            position: absolute;
+            margin-left: -12px;
             transition: opacity 0.3s;
             
             img{
@@ -124,7 +124,7 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
         button {
             position: relative;
             left: 88%;
-            top: -43px;
+            top: 26px;
             background: none;
             border: none;
             transform: translateX(-240%);
@@ -166,11 +166,11 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
 
             &.active {
                 left: 50%;
-                top: -7%;
+                top: 3%;
                 margin-left: 0px;
 
                 @media screen and (max-width: 330px){
-                    top: -7%;
+                    top: 2%;
                 }
 
                 div {

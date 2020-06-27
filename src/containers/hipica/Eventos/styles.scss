@@ -88,6 +88,8 @@
                 color: #9D8855;
                 font-size: 21px;
                 min-width: 15%;
+                display: flex;
+                align-items: center;
 
                 @media screen and (max-width: $bp-LG){
                     font-size: 15px;
@@ -106,6 +108,8 @@
                 font-size: 15px;
                 font-weight: 500;
                 padding-right: 40px;
+                display: flex;
+                align-items: center;
 
                 @media screen and (max-width: $bp-LG){
                     min-width: 35%;
@@ -116,6 +120,7 @@
             .local{
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
                 width: 100%;
                 font-size: 15px;
                 color: #484848bb;

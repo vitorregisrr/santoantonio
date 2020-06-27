@@ -128,6 +128,7 @@ const Resultados = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
+                                noOptionsMessage={() => 'Sem resultados'}
                                 onChange={val => changeFilter('cavaleiro', val)}
                                 options={[
                                 {
@@ -144,6 +145,7 @@ const Resultados = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
+                                noOptionsMessage={() => 'Sem resultados'}
                                 onChange={val => changeFilter('cavalos', val)}
                                 options={[
                                 {
@@ -160,6 +162,7 @@ const Resultados = (props) => {
                             <Select
                                 className="custom-select"
                                 placeholder={'Todos'}
+                                noOptionsMessage={() => 'Sem resultados'}
                                 onChange={val => changeFilter('anos', val)}
                                 options={[
                                 {

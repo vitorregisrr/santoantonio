@@ -25,7 +25,7 @@ const PhotoPreview = (props) => {
 
     const movePrev = () => {
         if (currIndex != 0) {
-            setCurrIndex(old => old > 1
+            setCurrIndex(old => old > 0
                 ? old - 1
                 : sliderData.length - 1);
         }

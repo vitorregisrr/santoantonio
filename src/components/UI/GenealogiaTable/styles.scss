@@ -91,6 +91,11 @@
             font-size: 17px;
             background-color: #fff;
             z-index: 2;
+
+            @media screen and (max-width: $bp-LG){
+                white-space: normal;
+                text-align: center;
+            }
         }
 
         .mae {

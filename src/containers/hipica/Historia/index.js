@@ -77,7 +77,7 @@ const Historia = (props) => {
                     <div className="pb-4 pb-lg-5">
                         <img src={data.page.dados.imagem_historia_hipismo} alt=""/>
                     </div>
-                    <div
+                    <div className=""
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_hipismo
                     }}></div>
