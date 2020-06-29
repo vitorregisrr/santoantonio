@@ -105,9 +105,9 @@ const Home = (props) => {
                 </h1>
 
                 <div className="Home-S__caption-div"></div>
-                <div className="Home-S__caption-brand">
+                <Link to="/" className="Home-S__caption-brand">
                     <img src={brandImage} alt="Logomarca Santo Antônio"/>
-                </div>
+                </Link>
             </div>
 
             <nav className="Home-S__menu">

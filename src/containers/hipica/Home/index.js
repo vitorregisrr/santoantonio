@@ -107,9 +107,9 @@ const Home = (props) => {
             </div>
 
             <div className="Home__caption">
-                <div className="Home__caption-brand">
+                <Link className="Home__caption-brand" to="/">
                     <img src={brandImage} alt="Logomarca Santo Antônio"/>
-                </div>
+                </Link>
                 <div className="Home__caption-div"></div>
                 <h1 className="Home__caption-title">
                     Equipe <br class="d-block d-lg-none"/> Hípica
