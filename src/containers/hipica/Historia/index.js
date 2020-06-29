@@ -184,7 +184,7 @@ const Historia = (props) => {
             <div className="bg-bege overlay-1">
                 <div className="container sm">
                     <div className="markup">
-                        <h4 className="mt-0">{data.page.dados.titulo_texto_acidentes}</h4>
+                        <h4 className="mt-0">{data.page.dados.titulo_texto_a_equipe}</h4>
                         <div
                             dangerouslySetInnerHTML={{
                             __html: data.page.dados.texto_a_equipe

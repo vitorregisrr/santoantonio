@@ -10,12 +10,8 @@ const Preloader = ({show, loadProgress}) => {
                 <div className="Preloader__brand">
                     <img src={brandGIF} alt="Logo animado" width={200}/>
                 </div>
-
                 <div className="Preloader__bar">
-                    <div className="number" style={{width: `${loadProgress === 1 ? 3 : loadProgress}%`}}> {loadProgress}%</div>
-                    
-                    <div className="Preloader__bar-percentage" style={{width: loadProgress+'%'}}></div>
-                  
+                    <img src={require('../../../assets/images/ico/loader.gif')} alt=""/>
                 </div>
             </div>
         </aside>

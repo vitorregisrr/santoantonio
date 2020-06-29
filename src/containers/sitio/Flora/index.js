@@ -83,25 +83,25 @@ const Tour = (props) => {
                                 <div className="row pl-lg-4">
                                     <div className="col-lg-2"></div>
                                     <div className="col-lg-10 mb-lg-3">
-                                        <img src={data.page.dados.imagem_central_1} alt=""/>
+                                        <img src={data.page.dados.bloco_imagem_1} alt=""/>
                                     </div>
                                     <div className="col-lg-12">
-                                        <img src={data.page.dados.imagem_central_2} alt=""/>
+                                        <img src={data.page.dados.bloco_imagem_4} alt=""/>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-lg-4">
                                 <img
-                                    src={data.page.dados.imagem_central_3}
+                                    src={data.page.dados.bloco_imagem_2}
                                     className="mb-lg-3"
                                     alt=""/>
-                                <img src={data.page.dados.imagem_central_4} alt=""/>
+                                <img src={data.page.dados.bloco_imagem_5} alt=""/>
                             </div>
                             <div className="col-lg-4 pl-lg-0 pt-lg-5">
                                 <div className="row pt-lg-5 mt-lg-5">
                                     <div className="col-lg-7 pt-lg-5 mt-lg-5">
                                         <img
-                                            src={data.page.dados.imagem_central_5}
+                                            src={data.page.dados.bloco_imagem_3}
                                             className="pt-lg-5 mt-lg-5"
                                             alt=""/>
                                     </div>

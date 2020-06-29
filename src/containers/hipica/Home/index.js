@@ -63,9 +63,9 @@ const Home = (props) => {
         if(data.slides && data.slides.length > 1){
             const interval = setInterval(() => {
                 if (isAutomatic) {
-                    updateState(currIndex === data.slides.length
+                    updateState(currIndex + 1 === data.slides.length
                         ? 0
-                        : currIndex + 1, true)
+                        : currIndex + 2, true)
                     }
                 }, 5000);
                 return () => clearInterval(interval);
