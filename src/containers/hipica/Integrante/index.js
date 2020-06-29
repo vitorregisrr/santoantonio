@@ -95,6 +95,9 @@ const Integrante = ({match}) => {
                 </div>
             </div>
 
+            {data.integrante.resultadosFinal.length > 0 ? 
+                (
+                <>
             <div className="container pt-5">
                 <div className="row">
                     <div className="col-12">
@@ -108,39 +111,41 @@ const Integrante = ({match}) => {
                             </div>
                         </header>
 
-                        <div className="Integrante_resultados">
-                            <div className="ano">
-                                2019
-                            </div>
-                            {data.integrante.resultadosFinal.map( (resul, i) => {
-                                if(i < 3){
-                                   return(
-                                    <div className="item" key={i}>
-                                        <div>
-                                            <span class="cavaleiro">
-                                                {resul.integrante_name}
-                                            </span>
-                                            <span class="cavalo">
-                                            {resul.cavalo_name}
-                                            </span>
-                                        </div>
-                                        <div className="resultado">
-                                            {resul.descricao}
-                                        </div>
+                            <div className="Integrante_resultados">
+                                    <div className="ano">
+                                        2019
                                     </div>
-                                   )
-                                }
-                            })}
-                            <div className="d-flex justify-content-end">
-                                <Link to="/hipica/resultados" className="more">
-                                    Ver todos os resultados
-                                </Link>
+                                    {data.integrante.resultadosFinal.map( (resul, i) => {
+                                        if(i < 3){
+                                        return(
+                                            <div className="item" key={i}>
+                                                <div>
+                                                    <span class="cavaleiro">
+                                                        {resul.integrante_name}
+                                                    </span>
+                                                    <span class="cavalo">
+                                                    {resul.cavalo_name}
+                                                    </span>
+                                                </div>
+                                                <div className="resultado">
+                                                    {resul.descricao}
+                                                </div>
+                                            </div>
+                                        )
+                                        }
+                                    })}
+                                    <div className="d-flex justify-content-end">
+                                        <Link to="/hipica/resultados" className="more">
+                                            Ver todos os resultados
+                                        </Link>
+                                    </div>
+                                </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+                            </>
+                        )
+                        : null}
             </> : <Spinner fullscreen />}
         </section>
     )

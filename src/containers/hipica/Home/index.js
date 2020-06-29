@@ -51,6 +51,11 @@ const Home = (props) => {
           })
         } ,[config]);
 
+
+    useEffect( () => {
+        setCurrIndex(0);
+    }, []);
+
     const updateState = (index, automatic) => {
         setCurrIndex(index);
 
@@ -60,16 +65,15 @@ const Home = (props) => {
     }
 
     useEffect(() => {
-        if(data.slides && data.slides.length > 1){
-            const interval = setInterval(() => {
-                if (isAutomatic) {
-                    updateState(currIndex + 1 === data.slides.length
-                        ? 0
-                        : currIndex + 2, true)
-                    }
-                }, 5000);
-                return () => clearInterval(interval);
-            }
+        const interval = setInterval(() => {
+            if (isAutomatic && data.slides && data.slides.length > 1) {
+                updateState(currIndex + 1 === data.slides.length
+                    ? 0
+                    : currIndex + 1, true)
+                }
+            }, 5000);
+            console.log('aaaaaaaa')
+        return () => clearInterval(interval);
     }, [currIndex]);
 
     const toggleMenu = () => {
