@@ -101,10 +101,6 @@ const QuemSomos = (props) => {
                             __html: data.page.dados.texto_continuacao_2_destaque
                         }}></blockquote>
 
-                        <div
-                            dangerouslySetInnerHTML={{
-                            __html: data.page.dados.texto_continuacao_2
-                        }}></div>
                     </div>
                 </div>
             </div>
