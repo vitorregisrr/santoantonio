@@ -51,11 +51,15 @@ const PhotoPreview = (props) => {
                 <div className="PhotoPreview__navs">
                     <button class="PhotoPreview__arrow left" onClick={movePrev}></button>
                     <div className="PhotoPreview__position">
-                    <span className="current">{currIndex === 0 ? 0 : currIndex + 1}</span>
+                    {sliderData.length !== 0 ? 
+                    <span className="current">{currIndex === 0 ? 1 : currIndex + 1}</span>
+                    : <span className="current">0</span>}
                         /
-                        <span className="total">{sliderData.length > 0
-                                ? Math.ceil(sliderData.length)
-                                : 0}</span>
+                    {sliderData.length !== 0 ?
+                    <span className="total">{sliderData.length !== 0
+                        ? Math.ceil(sliderData.length)
+                        : 1}</span>
+                    : <span className="total">0</span>}
                     </div>
                     <button class="PhotoPreview__arrow right" onClick={moveNext}></button>
                 </div>

@@ -17,6 +17,7 @@ const PhotoPreview = (props) => {
     useEffect(() => {
         if (props.items) {
             setSliderData(props.items)
+            console.log('Length', sliderData.length)
         }
     }, [props.items]);
 
@@ -51,11 +52,16 @@ const PhotoPreview = (props) => {
                 <div className="PhotoPreview__navs">
                     <button class="PhotoPreview__arrow left" onClick={movePrev}></button>
                     <div className="PhotoPreview__position">
-                        <span className="current">{currIndex === 0 ? 0 : currIndex + 1}</span>
+                        {props.videos.length === 0 ? 
+                         <span className="current">0</span> : 
+                         <span className="current">{currIndex === 1 ? currIndex + 1 : 1}</span>}
                         /
-                        <span className="total">{sliderData.length > 0
-                                ? Math.ceil(sliderData.length / 4)
-                                : 0}</span>
+                        {props.videos.length === 0 ?
+                         <span className="total">0</span>
+                        :  
+                        <span className="total">{props.videos > 1
+                            ? Math.ceil(props.videos / 4)
+                            : 1}</span>}
                     </div>
                     <button class="PhotoPreview__arrow right" onClick={moveNext}></button>
                 </div>
