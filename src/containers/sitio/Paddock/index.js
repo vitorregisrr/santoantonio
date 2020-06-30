@@ -106,7 +106,7 @@ const Paddock = (props) => {
 
             <div className="container mt-3 mt-lg-5 pt-lg-2">
                 <VideoPlayer
-                    url="https://www.youtube.com/embed/UVuYEX0mZ0M"
+                    url={data.page.dados.embed_youtube}
                     image={require('../../../assets/images/backgrounds/home-hipica.png')}/>
             </div>
 
