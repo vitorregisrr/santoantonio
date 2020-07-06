@@ -177,7 +177,7 @@ const Cavalo = ({match}) => {
                 </div>
 
                 <div className="row mb-5">
-                    <div className="col-lg-6 mb-5">
+                    {data.cavalo.resultadosFinal && <div className="col-lg-6 mb-5">
                         <header className="interna-subheader">
                             <div className="caption">
                                 <img
@@ -215,10 +215,11 @@ const Cavalo = ({match}) => {
                                 </Link>
                             </div>
                         </div>
-                    </div>
+                    </div>}
+                    {data.cavalo.videos && 
                     <div className="col-lg-6">
                         <VideoGallery videos={data.cavalo.videos}/>
-                    </div>
+                    </div>}
                 </div>
             </div>
             </>

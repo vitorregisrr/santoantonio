@@ -5,7 +5,7 @@ import './styles.scss'
 
 const IntegranteLink = ({id, img, nome, ocupacao}) => {
     return(
-        <Link className="IntegranteLink" to={`/hipica/integrante/${id}`}>
+        <div className="IntegranteLink" to={`/hipica/integrante/${id}`}>
             <div className="IntegranteLink__img">
                 <img src={img} alt={`Retrato do integrante ${nome}`}/>
             </div>
@@ -23,7 +23,7 @@ const IntegranteLink = ({id, img, nome, ocupacao}) => {
                 }
 
             </div>
-        </Link>
+        </div>
     )
 }
 

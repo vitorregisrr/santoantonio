@@ -77,7 +77,7 @@ const Historia = (props) => {
                     <div className="pb-4 pb-lg-5">
                         <img src={data.page.dados.imagem_historia_hipismo} alt=""/>
                     </div>
-                    <div className=""
+                    <div className="px-lg-4"
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_hipismo
                     }}></div>
@@ -141,7 +141,7 @@ const Historia = (props) => {
             <div className="container sm">
                 <div className="markup pt-4 pt-lg-5">
                     <h4>{data.page.dados.titulo_texto_cavaleiro_novo}</h4>
-                    <div
+                    <div className="px-lg-4"
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_cavaleiro_novo
                     }}></div>
@@ -248,6 +248,7 @@ const Historia = (props) => {
             <div className="container sm py-lg-3">
                 <div className="markup">
                     <div
+                        className="px-lg-4"
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_continuacao_2
                     }}></div>
