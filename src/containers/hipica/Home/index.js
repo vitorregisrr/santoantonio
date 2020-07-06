@@ -11,7 +11,7 @@ const Home = (props) => {
     const [isFetching,
         setIsFetching] = useState(true);
     const [data,
-        setData] = useState(false);
+        setData] = useState({slides: false});
     const [currIndex,
         setCurrIndex] = useState(0);
     const [isAutomatic,
@@ -66,13 +66,12 @@ const Home = (props) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            if (isAutomatic && data.slides && data.slides.length > 1) {
-                updateState(currIndex + 1 === data.slides.length
+            if (isAutomatic) {
+                updateState(currIndex === data.slides.length - 1
                     ? 0
                     : currIndex + 1, true)
-                }
-            }, 5000);
-            console.log('aaaaaaaa')
+            }
+        }, 4000);
         return () => clearInterval(interval);
     }, [currIndex]);
 

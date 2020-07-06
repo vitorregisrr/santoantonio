@@ -40,6 +40,7 @@ const Home = (props) => {
           axios.get('sitio/slides', config)
           .then(response => {
               setData(response.data);
+              setCurrIndex(0)
               setStorage('home-sitio-data', JSON.stringify(response.data));
           })
           .catch(err => console.log(err))
@@ -57,16 +58,14 @@ const Home = (props) => {
     }
 
     useEffect(() => {
-     if(data.slides && data.slides.length > 1){
         const interval = setInterval(() => {
             if (isAutomatic) {
-                updateState(currIndex === data.slides.length
+                updateState(currIndex === data.slides.length - 1
                     ? 0
                     : currIndex + 1, true)
             }
-        }, 5000);
+        }, 4000);
         return () => clearInterval(interval);
-     }
     }, [currIndex]);
 
     const toggleMenu = () => {
