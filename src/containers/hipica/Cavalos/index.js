@@ -102,7 +102,7 @@ const Cavalos = (props) => {
                                         pais={cavalo.bio}
                                         nascimento={cavalo.date_nasc}
                                         detalhes={`${cavalo.status} – ${cavalo.pelagem} – ${cavalo.raça} | altura: ${cavalo.altura}`}
-                                        img={require('../../../assets/images/thumbs/cavalo-1.png')}
+                                        img={cavalo.image}
                                     />
                                     </Animated>
                                 </div>
