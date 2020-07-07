@@ -222,8 +222,12 @@ $transition: all 1.4s cubic-bezier(.81,.42,.33,1);
                     min-width: 200px;
                 }
 
+                &:nth-child(2){
+                    min-width: 230px;
+                }
+
                 &:nth-last-child(2){
-                    min-width: 250px;
+                    min-width: 230px;
                 }
             }
 

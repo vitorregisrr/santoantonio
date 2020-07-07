@@ -112,28 +112,28 @@ const Home = (props) => {
             <nav className="Home-S__menu">
                 <div className="Home-S__menu-list" data-show={isToggled}>
                     <Link to="/sitio/historia" className="Home-S__menu-item">
-                        <span className="title">História</span>
-                        <span className="desc">A história do Sítio <br class="d-none d-lg-block"/>Santo Antônio</span>
+                        <span className="title">{data.pages[1].titulo}</span>
+                        <span className="desc">{data.pages[1].phrase}</span>
                     </Link>
                     <Link to="/sitio/quemsomos" className="Home-S__menu-item">
-                        <span className="title">Quem Somos</span>
-                        <span className="desc">Descrição lorem ipsum</span>
+                        <span className="title">{data.pages[2].titulo}</span>
+                        <span className="desc">{data.pages[2].phrase}</span>
                     </Link>
                     <Link to="/sitio/paddock" className="Home-S__menu-item">
-                        <span className="title">Paddock</span>
-                        <span className="desc">Centro de treinamento<br class="d-none d-lg-block"/> equestre</span>
+                        <span className="title">{data.pages[3].titulo}</span>
+                        <span className="desc">{data.pages[3].phrase}</span>
                     </Link>
                     <Link to="/sitio/fauna" className="Home-S__menu-item">
-                        <span className="title">Fauna</span>
-                        <span className="desc">Santuário<br class="d-none d-lg-block"/> de animais</span>
+                        <span className="title">{data.pages[4].titulo}</span>
+                        <span className="desc">{data.pages[4].phrase}</span>
                     </Link>
                     <Link to="/sitio/flora" className="Home-S__menu-item">
-                        <span className="title">Flora</span>
-                        <span className="desc">Recuperação e <br class="d-none d-lg-block"/> preservação da natureza</span>
+                        <span className="title">{data.pages[5].titulo}</span>
+                        <span className="desc">{data.pages[5].phrase}</span>
                     </Link>
                     <Link to="/sitio/tour" className="Home-S__menu-item">
-                        <span className="title">Tour</span>
-                        <span className="desc">Faça um tour por <br class="d-none d-lg-block"/>cada setor do sítio</span>
+                        <span className="title">{data.pages[6].titulo}</span>
+                        <span className="desc">{data.pages[6].phrase}</span>
                     </Link>
                 </div>
             </nav>

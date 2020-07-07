@@ -5,6 +5,10 @@
     margin-bottom: 30px;
     width: 100%;
 
+    &[disabled-link="true"]{
+        pointer-events: none;
+    }
+
     &__img{
         width: 100%;
         margin-bottom: 20px;

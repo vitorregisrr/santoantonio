@@ -98,7 +98,7 @@ const Cavalos = (props) => {
                                     <CavaloLink
                                         id={cavalo.slug}
                                         nome={cavalo.name}
-                                        has_link={cavalo.has_link}
+                                        has_interna={cavalo.has_interna}
                                         pais={cavalo.bio}
                                         nascimento={cavalo.date_nasc}
                                         detalhes={`${cavalo.status} – ${cavalo.pelagem} – ${cavalo.raça} | altura: ${cavalo.altura}`}

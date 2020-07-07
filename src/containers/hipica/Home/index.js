@@ -118,28 +118,28 @@ const Home = (props) => {
             <nav className="Home__menu">
                 <div className="Home__menu-list" data-show={isToggled}>
                     <Link to="/hipica/historia" className="Home__menu-item">
-                        <span className="title">História</span>
-                        <span className="desc">Saiba como tudo começou</span>
+                        <span className="title">{data.pages[1].titulo}</span>
+                        <span className="desc">{data.pages[1].phrase}</span>
                     </Link>
                     <Link to="/hipica/equipe" className="Home__menu-item">
-                        <span className="title">Equipe</span>
-                        <span className="desc">Os integrantes da nossa história</span>
+                        <span className="title">{data.pages[2].titulo}</span>
+                        <span className="desc">{data.pages[2].phrase}</span>
                     </Link>
                     <Link to="/hipica/cavalos" className="Home__menu-item">
-                        <span className="title">Cavalos</span>
-                        <span className="desc">Nossos melhores amigos</span>
+                        <span className="title">{data.pages[3].titulo}</span>
+                        <span className="desc">{data.pages[3].phrase}</span>
                     </Link>
                     <Link to="/hipica/resultados" className="Home__menu-item">
-                        <span className="title">Resultados</span>
-                        <span className="desc">Maiores <br class="d-none d-lg-block"/> conquistas</span>
+                        <span className="title">{data.pages[4].titulo}</span>
+                        <span className="desc">{data.pages[4].phrase}</span>
                     </Link>
                     <Link to="/hipica/eventos" className="Home__menu-item">
-                        <span className="title">Eventos</span>
-                        <span className="desc">Principais concursos do ano</span>
+                        <span className="title">{data.pages[5].titulo}</span>
+                        <span className="desc">{data.pages[5].phrase}</span>
                     </Link>
                     <Link to="/hipica/midia" className="Home__menu-item">
-                        <span className="title">Mídia</span>
-                        <span className="desc">O que estão falando da gente</span>
+                        <span className="title">{data.pages[6].titulo}</span>
+                        <span className="desc">{data.pages[6].phrase}</span>
                     </Link>
                 </div>
             </nav>

@@ -49,13 +49,23 @@ const Midia = (props) => {
             listAnos = data
                 .posts
                 .map(i => {
+                   if(i.date_of_publication){
                     return ({
                         label: new Date(i.date_of_publication).getFullYear(),
                         value: new Date(i.date_of_publication).getFullYear()
                     })
+                   }
+
+                   return {
+                       label: 2019,
+                       value: 2019,
+                   }
                 })
                 .filter((thing, index, self) => index === self.findIndex((t) => (t.place === thing.place && t.value === thing.value)))
                 .sort((a,b)=>b.value-a.value)
+
+
+            console.log(listAnos)
 
         }
     
