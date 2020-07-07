@@ -118,16 +118,16 @@ const Home = (props) => {
             <nav className="Home__menu">
                 <div className="Home__menu-list" data-show={isToggled}>
                     <Link to="/hipica/historia" className="Home__menu-item">
-                        <span className="title">{data.pages[7].titulo}</span>
-                        <span className="desc">{data.pages[7].phrase}</span>
+                        <span className="title">{data.pages[9].titulo}</span>
+                        <span className="desc">{data.pages[9].phrase}</span>
                     </Link>
                     <Link to="/hipica/equipe" className="Home__menu-item">
                         <span className="title">{data.pages[8].titulo}</span>
                         <span className="desc">{data.pages[8].phrase}</span>
                     </Link>
                     <Link to="/hipica/cavalos" className="Home__menu-item">
-                        <span className="title">{data.pages[9].titulo}</span>
-                        <span className="desc">{data.pages[9].phrase}</span>
+                        <span className="title">{data.pages[7].titulo}</span>
+                        <span className="desc">{data.pages[7].phrase}</span>
                     </Link>
                     <Link to="/hipica/resultados" className="Home__menu-item">
                         <span className="title">{data.pages[10].titulo}</span>
