@@ -116,24 +116,24 @@ const Home = (props) => {
                         <span className="desc">{data.pages[1].phrase}</span>
                     </Link>
                     <Link to="/sitio/quemsomos" className="Home-S__menu-item">
+                        <span className="title">{data.pages[6].titulo}</span>
+                        <span className="desc">{data.pages[6].phrase}</span>
+                    </Link>
+                    <Link to="/sitio/paddock" className="Home-S__menu-item">
                         <span className="title">{data.pages[2].titulo}</span>
                         <span className="desc">{data.pages[2].phrase}</span>
                     </Link>
-                    <Link to="/sitio/paddock" className="Home-S__menu-item">
+                    <Link to="/sitio/fauna" className="Home-S__menu-item">
                         <span className="title">{data.pages[3].titulo}</span>
                         <span className="desc">{data.pages[3].phrase}</span>
                     </Link>
-                    <Link to="/sitio/fauna" className="Home-S__menu-item">
+                    <Link to="/sitio/flora" className="Home-S__menu-item">
                         <span className="title">{data.pages[4].titulo}</span>
                         <span className="desc">{data.pages[4].phrase}</span>
                     </Link>
-                    <Link to="/sitio/flora" className="Home-S__menu-item">
+                    <Link to="/sitio/tour" className="Home-S__menu-item">
                         <span className="title">{data.pages[5].titulo}</span>
                         <span className="desc">{data.pages[5].phrase}</span>
-                    </Link>
-                    <Link to="/sitio/tour" className="Home-S__menu-item">
-                        <span className="title">{data.pages[6].titulo}</span>
-                        <span className="desc">{data.pages[6].phrase}</span>
                     </Link>
                 </div>
             </nav>
