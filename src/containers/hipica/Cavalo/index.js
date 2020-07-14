@@ -51,7 +51,7 @@ const Cavalo = ({match}) => {
             <div className="container pt-5 mt-lg-5">
                 <div className="row">
                     <div className="col-lg-6">
-                        <img src={require('../../../assets/images/thumbs/cavalo-1.png')}/>
+                        <img src={cavalo.image}/>
                     </div>
                     <div className="col-lg-6">
                         <ul className="Cavalo__about">
