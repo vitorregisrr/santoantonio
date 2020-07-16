@@ -6,7 +6,7 @@
     width: 100%;
 
     &[disabled-link="true"]{
-        pointer-events: none;
+        pointer-events: none !important;
     }
 
     &__img{

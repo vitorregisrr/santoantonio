@@ -170,23 +170,6 @@ const Midia = (props) => {
                             ]}/>
                         </div>
                     </div>
-                    <div className="col-lg-4 px-lg-4 d-flex pr-lg-0">
-                        <div className="filter-group">
-                            <label htmlFor="">Cavalos</label>
-                            <Select
-                                className="custom-select"
-                                noOptionsMessage={() => 'Sem resultados'}
-                                placeholder={'Todos'}
-                                onChange={val => changeFilter('cavalos', val)}
-                                options={[
-                                {
-                                    label: 'Todos',
-                                    value: ''
-                                },
-                                ...listCavalos
-                            ]}/>
-                        </div>
-                    </div>
                     <div className="col-lg-3 px-lg-4 d-flex pl-lg-0">
                         <div className="filter-group">
                             <label htmlFor="">Anos</label>

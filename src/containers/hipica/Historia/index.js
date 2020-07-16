@@ -81,6 +81,15 @@ const Historia = (props) => {
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_hipismo
                     }}></div>
+
+                    <div className="px-3 pt-4">
+                        <figure>
+                            <img src={data.page.dados['imagem_historia_hipismo2']}alt=""/>
+                            <figcaption className="text-right">
+                                {data.page.dados.legenda_imagem_hipismo2}
+                            </figcaption>
+                        </figure>
+                    </div>
                 </div>
             </div>
 
@@ -149,8 +158,9 @@ const Historia = (props) => {
             </div>
 
             <div className="container">
-                <div className="row pt-3 pt-lg-5 mt-lg-3">
+                <div className="row pt-3 pt-lg-5 mt-lg-3 justify-content-center">
                     <div className="col-lg-7 px-lg-0">
+                        <figure>
                         <img
                             height="700"
                             style={{
@@ -158,15 +168,10 @@ const Historia = (props) => {
                         }}
                             src={data.page.dados['img-hipismo-4']}
                             alt=""/>
-                    </div>
-                    <div className="col-lg-5 px-lg-0">
-                        <img
-                            height="700"
-                            style={{
-                            objectFit: 'cover'
-                        }}
-                            src={data.page.dados['img-hipismo-5']}
-                            alt=""/>
+                            <figcaption class="text-right">
+                                {data.page.dados['legenda_img-hipismo-4']}
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
@@ -315,7 +320,12 @@ const Historia = (props) => {
                         __html: data.page.dados.texto_nova_empreitada
                     }}></div>
                     <div className="pt-4 pt-lg-5 mt-lg-3">
-                        <img src={data.page.dados['img-hipismo-13']}alt=""/>
+                        <figure>
+                            <img src={data.page.dados['img-hipismo-13']}alt=""/>
+                            <figcaption class="text-right">
+                                {data.page.dados["legenda_foto_inferior"]}
+                            </figcaption>
+                        </figure>
                     </div>
                 </div>
             </div>
