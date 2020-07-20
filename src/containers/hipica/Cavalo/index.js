@@ -38,7 +38,7 @@ const Cavalo = ({match}) => {
             <>
             <div className="container">
                 <div className="Cavalo__header">
-                    <Link to="/hipica/cavalos" className="Cavalo__header-back">
+                    <Link to={`/hipica/cavalos?filter=${data.cavalo.category}`} className="Cavalo__header-back">
                         Voltar
                     </Link>
 

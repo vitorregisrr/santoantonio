@@ -47,9 +47,12 @@ const Historia = (props) => {
                 </div>
             </div>
             <div className="container pb-4 pb-lg-5 px-lg-5">
-                <div className="markup px-lg-5">
+                <figure className="markup px-lg-5">
                     <img src={data.page.dados.imagem_superior} alt=""/>
-                </div>
+                    <figcaption className="text-center mt-4">
+                        {data.page.dados.legenda_imagem_superior}
+                    </figcaption>
+                </figure>
             </div>
             <div className="container sm pt-lg-5">
                 <div className="markup wow">
@@ -74,9 +77,12 @@ const Historia = (props) => {
             <div className="container sm">
                 <div className="markup pt-lg-1">
                     <h4>{data.page.dados.titulo_historia_hipismo}</h4>
-                    <div className="pb-4 pb-lg-5">
+                    <figure className="pb-4 pb-lg-5">
                         <img src={data.page.dados.imagem_historia_hipismo} alt=""/>
-                    </div>
+                        <figcaption className="text-right">
+                            {data.page.dados.legenda_imagem_historia_hipismo}
+                        </figcaption>
+                    </figure>
                     <div className="px-lg-4"
                         dangerouslySetInnerHTML={{
                         __html: data.page.dados.texto_hipismo
@@ -126,7 +132,7 @@ const Historia = (props) => {
 
             <div className="container">
                 <div className="row pt-3 pt-lg-5 mt-lg-3">
-                    <div className="col-lg-6">
+                    <figure className="col-lg-6">
                         <img
                             height="400"
                             style={{
@@ -134,8 +140,11 @@ const Historia = (props) => {
                         }}
                             src={data.page.dados['img-hipismo-2']}
                             alt=""/>
-                    </div>
-                    <div className="col-lg-6">
+                             <figcaption className="text-right">
+                                {data.page.dados['legenda_img-hipismo-2']}
+                            </figcaption>
+                    </figure>
+                    <figure className="col-lg-6">
                         <img
                             height="400"
                             style={{
@@ -143,7 +152,10 @@ const Historia = (props) => {
                         }}
                             src={data.page.dados['img-hipismo-3']}
                             alt=""/>
-                    </div>
+                              <figcaption className="text-right">
+                                {data.page.dados['legenda_img-hipismo-3']}
+                            </figcaption>
+                    </figure>
                 </div>
             </div>
 
@@ -228,6 +240,9 @@ const Historia = (props) => {
                                 alt=""/>
                         </div>
                     </div>
+                    <figcaption className="text-right mt-3">
+                        {data.page.dados['legenda_img-hipismo-9']}
+                    </figcaption>
                 </div>
 
                 <div className="markup pt-4 pt-lg-5 pb-lg-1">
@@ -307,7 +322,9 @@ const Historia = (props) => {
                             alt=""/>
                     </div>
                 </div>
-
+                <figcaption className="text-right mt-3">
+                    {data.page.dados['legenda_img-hipismo-12']}
+                </figcaption>
             </div>
 
             <div className="container sm pt-4 pt-lg-5">

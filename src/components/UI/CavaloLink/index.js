@@ -2,6 +2,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import './styles.scss'
+import Cavalo from 'containers/hipica/Cavalo'
 
 const CavaloLink = ({
     id,
@@ -30,9 +31,9 @@ const CavaloLink = ({
                     {nascimento}
                 </div>
 
-                <div className="detalhes">
+               {detalhes ?  <div className="detalhes">
                     {detalhes}
-                </div>
+                </div> : null}
 
             </div>
         </Link>

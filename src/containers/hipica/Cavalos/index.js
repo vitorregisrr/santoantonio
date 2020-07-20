@@ -2,6 +2,8 @@ import axios from 'axios.instance'
 import React, {useState, useEffect} from 'react';
 import {getStorage, setStorage} from 'util/storage';
 import {Animated} from "react-animated-css";
+import {withRouter} from 'react-router-dom';
+import {Element, scroller, animateScroll as scroll} from 'react-scroll';
 
 import CavaloLink from '../../../components/UI/CavaloLink/'
 
@@ -15,9 +17,8 @@ const Cavalos = (props) => {
         setData] = useState(false);
     const [maxItems,
         setMaxItems] = useState(pageItems);
-
-        const [currFilter,
-            setCurrFilter] = useState('No Brasil');
+    const [currFilter,
+        setCurrFilter] = useState('No Brasil');
     
             useEffect(() => {
                 const dataName = 'hipica-cavalos-data';
@@ -37,6 +38,31 @@ const Cavalos = (props) => {
                         . finally(() => {
                             setIsFetching(false);
                         })
+                }
+
+                const queryString = require('query-string');
+                var parsed = queryString.parse(props.location.search);
+                const params = new URLSearchParams(parsed); 
+                const filter = params.get('filter');
+            
+                if(filter){
+                    switch(filter){
+                        case '7':
+                            changeFilter('No Brasil')
+                        break;
+                        
+                        case '8':
+                            changeFilter('Na Europa')
+                        break;
+    
+                        case '9':
+                            changeFilter('Potros')
+                        break;
+    
+                        case '10':
+                            changeFilter('Marcaram História')
+                        break;
+                    }
                 }
             }, []);
         
@@ -63,6 +89,7 @@ const Cavalos = (props) => {
                     </div>
                 </div>
 
+                <Element name="cavalos">
                 <div className="container justify-content-center pb-5">
                     <div className="row px-lg-0">
                         <div className="col-lg-3 px-lg-4 d-flex">
@@ -87,12 +114,14 @@ const Cavalos = (props) => {
                         </div>
                     </div>
                 </div>
+                </Element>
 
+                
                 <div className="container">
                     <div className="row">
                         {data.cavalos[currFilter] ? data.cavalos[currFilter].map( (cavalo, i) => {
                             if( i < maxItems){
-                               return(
+                            return(
                                 <div className="col-md-6 col-lg-4 fadeInUp mb-3" key={cavalo.id}>
                                     <Animated animationIn="fadeIn" animationOut="fadeOut" isVisible={true}>
                                     <CavaloLink
@@ -106,12 +135,13 @@ const Cavalos = (props) => {
                                     />
                                     </Animated>
                                 </div>
-                               )
+                            )
                             }
                         })
                         : null }
                     </div>
-                </div>
+                </div>  
+            
 
                 {data.cavalos[currFilter].length > maxItems ? 
                 <div className="container">
@@ -127,4 +157,4 @@ const Cavalos = (props) => {
     )
 }
 
-export default Cavalos;
+export default withRouter(Cavalos);;

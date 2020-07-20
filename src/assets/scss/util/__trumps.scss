@@ -216,20 +216,9 @@ button {
     figcaption,
     figcaption p {
         margin-top: 15px;
-        font-weight: bold;
-        font-size: 12px !important;
-        color: #484848;
-
-        &.arte {
-            font-size: 17px !important;
-            color: #484848;
-
-            span {
-                display: block;
-                font-size: 13px !important;
-                font-weight: 300;
-            }
-        }
+        font-weight: lighter;
+        font-size: 16px;
+        color: black;
     }
 }
 

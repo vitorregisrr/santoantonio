@@ -1,6 +1,10 @@
 @import 'assets/scss/variables/__all.scss';
 
 .Cavalos{
+    .page-interna{
+        min-height: 170vh ;
+    }
+
     .PageBanner__title{
         @media screen and (max-width: $bp-MD){
             font-size: 57px;
