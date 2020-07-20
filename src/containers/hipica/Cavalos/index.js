@@ -130,7 +130,7 @@ const Cavalos = (props) => {
                                         has_interna={cavalo.has_interna}
                                         pais={cavalo.bio}
                                         nascimento={cavalo.date_nasc}
-                                        detalhes={`${cavalo.status} – ${cavalo.pelagem} – ${cavalo.raça} | altura: ${cavalo.altura}`}
+                                        detalhes={cavalo.altura ? `${cavalo.status} – ${cavalo.pelagem} – ${cavalo.raça} | altura: ${cavalo.altura}` : null}
                                         img={cavalo.image}
                                     />
                                     </Animated>
