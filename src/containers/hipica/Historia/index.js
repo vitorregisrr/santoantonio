@@ -241,7 +241,7 @@ const Historia = (props) => {
                         </div>
                     </div>
                     <figcaption className="text-right mt-3">
-                        {data.page.dados['legenda_img-hipismo-9']}
+                        {data.page.dados['legenda_img-hipismo-8']}
                     </figcaption>
                 </div>
 
