@@ -5,7 +5,7 @@ import {Portal} from 'react-portal';
 
 import './styles.scss'
 
-const PhotoModal = ({currentItem, items, closeModal, visible}) => {
+const PhotoModal = ({currentItem, items, closeModal, visible, descricao}) => {
     const [current,
         setCurrent] = useState(currentItem)
     const slickSettings = {
@@ -24,8 +24,8 @@ const PhotoModal = ({currentItem, items, closeModal, visible}) => {
     useEffect(() => {
         if (currentItem && items) {
             slickRef
-                .current
-                .slickGoTo(currentItem);
+            .current
+            .slickGoTo(currentItem);
         }
     }, [currentItem])
 
@@ -61,9 +61,9 @@ const PhotoModal = ({currentItem, items, closeModal, visible}) => {
 
                 <div className="container">
                     <div className="PhotoModal__position">
-                        <div className="legenda">
-                            Legenda foto Loren ipsum dolor
-                        </div>
+                       {items ?  <div className="legenda">
+                        {items[current].descricao}
+                        </div> : null}
                         <div>
                             <div className="PhotoModal__position">
                                 <span className="current">{current + 1}</span>

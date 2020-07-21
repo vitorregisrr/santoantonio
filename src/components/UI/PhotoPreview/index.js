@@ -84,12 +84,14 @@ const PhotoPreview = (props) => {
                 </> : ''}
             </section>
 
+            { sliderData[currIndex] ? <> 
             <PhotoModal
                 currentItem={currIndex}
                 closeModal=
                 { () => setShowModal(false) }
                 visible={showModal}
                 items={sliderData}/>
+                  </> : null}
         </React.Fragment>
     )
 }
